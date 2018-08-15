@@ -379,15 +379,24 @@ Reveal.addEventListener( 'customevent', function() {
 		<script src="js/reveal.js"></script>
 
 		<script>
+            Reveal.addEventListener( 'ready', function() {
+                // Only one test for now, we're mainly ensuring that there
+                // are no execution errors when running PDF mode
+                test('Reveal.isReady', function () {
+                    strictEqual(Reveal.isReady(), true, 'returns true');
+                });
+            });
 
-			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
 				progress: true,
 				history: true,
 				center: true,
+				pdfSeparateFragments:false,
+				pdf:true,
+				pdfMaxPagesPerSlide: 1,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
