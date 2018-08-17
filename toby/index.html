@@ -12,18 +12,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/solarized-custom.css" id="theme">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 		
 		<style>
 			/* custom */
-			strong{word-break: keep-all; font-size:32px!important}
-			p{line-height:1.7 !important; font-size:30px !important; word-break: keep-all; }
+			strong{word-break: keep-all; font-size:28px!important; display:block;}
+			p{line-height:1.6 !important; font-size:24px !important; word-break: keep-all; }
 			.reveal pre{margin-left:0px;}
 			ul > li ~ li, ol > li ~ li{margin-top:30px !important}
 			ol ul > li ~ li, ul ol > li ~ li{margin-top:0 !important}
+			.reveal small{font-size:24px;}
+			img{display: block}
+			.aquas{color:aqua}
 			
 		</style>
 
@@ -108,43 +111,43 @@
 }</code></pre>
 					</section>
 					<section style="text-align: left;">
-						<ol style="font-size:32px; line-height: 1.6; word-break: keep-all">
+						<ol style="font-size:24px; line-height: 1.6; word-break: keep-all">
 							<li>자바에서 가장 손쉽게 실행 가능한 main() 메소드</li>
 							<li>UserDao의 오브젝트를 가져와서 메소드를 호출한다.</li>
 							<li>테스트에 사용할 입력 값(User 오브젝트)을 직접 코드에서 만들어 넣어준다.</li>
-							<li>테스트의 결과를 콘솔에 출력한다.</li>
-							<li>각 단계의 작업이 에러 없이 끝나면 콘솔에 성공 메시지로 출력해준다.</li>
+							<li>테스트의 결과를 <span class="aquas">콘솔</span>에 출력한다.</li>
+							<li>각 단계의 작업이 에러 없이 끝나면 <span class="aquas">콘솔</span>에 성공 메시지로 출력해준다.</li>
 						</ol>
 					</section>
 					<section style="text-align: left;">
 						<strong>웹을 통한 DAO 테스트 방법의 문제점</strong>
-						<ol style="font-size:32px; line-height: 1.6; word-break: keep-all; margin-top:30px">
+						<ol style="font-size:24px; line-height: 1.6; word-break: keep-all; margin-top:30px">
 							<li>DAO에 대한 테스트를 하는데도 서비스 클래스, 컨트롤러, JSP 뷰 등 모든 레이어 기능을 다 만들고 나서야 테스트가 가능하다.</li>
 							<li>테스트를 하는 중에 에러가 나거나 테스트가 실패했다면 과연 어디에서 문제가 발생했는지를 찾아내야 하는 수고도 필요하다.</li>
-							<li>폼을 띄우고 값을 입력하고 등록하는 버튼을 눌렀을 경우 실패하는 원인은 너무나도 다양하다.</li>
+							<li>예를들어, 폼을 띄우고 값을 입력하고 등록하는 버튼을 눌렀을 경우 실패하는 원인은 너무나도 다양하다.(DB, SQL, JSP 기타 등등)</li>
 						</ol>
 					</section>
 					<section style="text-align: left;">
 						<strong>작은 단위의 테스트</strong>
-						<ol style="font-size:28px; line-height: 1.6; word-break: keep-all; margin-top:30px">
+						<ol style="font-size:24px; line-height: 1.6; word-break: keep-all; margin-top:30px">
 							<li>테스트는 가능하면 작은 단위로 쪼개서 집중해서 할 수 있어야 한다. 관심사의 분리라는 원리가 여기에도 적용된다.</li>
 							<li>UserDaoTest는 한 가지 관심에 집중할 수 있게 작은 단위로 만들어진 테스트다.(JSP 서블릿에서 에러가 발생해서 그것을 찾으려고 시간 낭비할 필요가 없다.)</li>
 							<li>작은 단위의 코드에 대해 테스트를 수행한 것을
-								<span style="color:red">단위테스트(unit test)</span>라고 한다.</li>
+								<span class="aquas">단위테스트(unit test)</span>라고 한다.</li>
 							<li>UserDaoTest는 DB의 상태를 비우고 재시작해야하는 부분이 있어 단위 테스트로서 가치가 없어진다. 통제할 수 없는 외부의 리소스에 의존하는 테스트는 단위 테스트가 아니라고 보기도 한다.</li>
 							<li>단위 테스트를 하는 이유는 개발자가 설계하고 만든 코드가 원래 의도하는대로 동작하는지 개발자 스스로 빨리 확인하고 명확하게 하기 위함이다. 그래서 작은 단위로 테스트하는 것이 편리하다.</li>
 						</ol>
 					</section>
 					<section style="text-align: left;">
 						<strong>자동수행 테스트 코드</strong>
-						<ol style="font-size:28px; line-height: 1.6; word-break: keep-all; margin-top:30px">
+						<ol style="font-size:24px; line-height: 1.6; word-break: keep-all; margin-top:30px">
 							<li>UserDaoTest는 자바 클래스의 main() 메소드를 실행하는 가장 간단한 방법만으로 테스트의 전 과정이 자동으로 진행된다.</li>
 							<li>이렇게 테스트는 자동으로 수행되도록 코드로 만들어지는 것이 중요하다.</li>
 						</ol>
 						<br>
 						<br>
 						<strong>지속적인 개선과 점진적인 개발을 위한 테스트</strong>
-						<ol style="font-size:28px; line-height: 1.6; word-break: keep-all; margin-top:30px">
+						<ol style="font-size:24px; line-height: 1.6; word-break: keep-all; margin-top:30px">
 							<li>1장에서의 초난감 DAO 코드를 UserDaoTest를 이용하여 점진적으로 단위 테스트로 개선했다.</li>
 							<li>테스트를 이용하면 새로운 기능도 기대한 대로 동작하는지 확인할 수 있을 뿐만 아니라, 기존에 만들어 뒀던 기능들이 새로운 기능을 추가하느라 수정한 코드에 영향을 받지 않고 여전히 잘 동작하는지를 확인할 수도 있다.</li>
 						</ol>
@@ -153,7 +156,7 @@
 				<section>
 					<section style="text-align: left;">
 						<h4>2.1.3 UserDaoTest의 문제점</h4>
-						<ol style="font-size:28px; line-height: 1.6; word-break: keep-all;">
+						<ol style="font-size:24px; line-height: 1.6; word-break: keep-all;">
 							<li>수동 확인 작업의 번거로움</li>
 							<ul>
 								<li>여전히 사람의 눈으로 확인하는 과정이 필요함</li>
@@ -194,18 +197,18 @@ System.out.println(user2.getId() + "조회 성공");
 				<section>
 					<section style="text-align: left;">
 						<h4>2.2.2 테스트의 효율적인 수행과 결과 관리</h4>
-						<ol style="font-size:28px; line-height: 1.6; word-break: keep-all;">
-							<li> main() 메소드를 이용한 태스트 작성 방법만으로는 애플리케이션 규모가 커지고 태스트 개수가 많아지면 태스트를 수행히는 일이 점점 부담이 될 것이다.</li>
-							<li> 프로그래머를 위한 자바 태스팅 프레임워크라고 불리는 <span style="color:red">JUnit</span>은 자바 개발 자라면 한 번쯤 들어봤거나 사용해봤을 유명한 테스트 지원 도구다.</li>
+						<ol style="font-size:24px; line-height: 1.6; word-break: keep-all;">
+							<li> main() 메소드를 이용한 테스트 작성 방법만으로는 애플리케이션 규모가 커지고 테스트 개수가 많아지면 테스트를 수행히는 일이 점점 부담이 될 것이다.</li>
+							<li> 프로그래머를 위한 자바 테스팅 프레임워크라고 불리는 <span class="aquas">JUnit</span>은 자바 개발 자라면 한 번쯤 들어봤거나 사용해봤을 유명한 테스트 지원 도구다.</li>
 						</ol>
 					</section>
 					<section style="text-align: left;">
 						<strong>JUnit 테스트로 전환</strong>
-						<ul style="font-size:28px; line-height: 1.6; word-break: keep-all;">
+						<ul style="font-size:24px; line-height: 1.6; word-break: keep-all;">
 							<li>프레임워크에서 동작하는 코드는 IOC에 의해 main() 메소드도 필요 없고 오브젝트를 만들어서 실행시키는 코드를 만들 필요도 없다.</li>
 						</ul><br><br>
 						<strong>테스트 메소드 전환</strong>
-						<ul style="font-size:28px; line-height: 1.6; word-break: keep-all;">
+						<ul style="font-size:24px; line-height: 1.6; word-break: keep-all;">
 							<li>새로 만들 테스트는 JUnit 프레임 워크가 요구하는 조건 두가지를 따라야 한다.</li>
 							<ol>
 								<li>메소드가 public으로 선언돼야 한다.</li>
@@ -227,17 +230,17 @@ public class UserDaoTest {
 		...
 	}
 }</code></pre>
-<ul style="font-size:28px; line-height: 1.6; word-break: keep-all;">
+<ul style="font-size:24px; line-height: 1.6; word-break: keep-all;">
 <li> JUnit은 전통적으로 public 메소드만을 테스트 메소드로 허용 하고 있다. 마지막으로 @Test 애노테이션을 붙여주면 된다.</li>
 </ul>
 					</section>
 					<section style="text-align: left;">
 						<strong>검증 코드 전환(assertThat())</strong>
 						<p>테스트의 결과를 검증하는 if/else 문장을 JUnit이 제공하는 방법을 이용해 전환해보자.</p>
-						<ul style="font-size:28px; line-height: 1.6; word-break: keep-all;">
+						<ul style="font-size:24px; line-height: 1.6; word-break: keep-all;">
 							<li>assertThat() 메소드는 첫 번째 파라미터의 값을 뒤에 나오는 매처(matcher)라고 불리는 조건으로 비교해서 일치하면 넘어가고 아니면 테스트가 실패하도록 만들어 준다.</li>
 							<li>is()는 매처의 일종으로 equals()로 비교해주는 기능을 가졌다.</li>
-							<li>JUnit은 예외가 발생하거나 assertThat()에서 실패하지 않고 태스트 메소드의 실행 이 완료되면 테스트가 성공했다고 인식한다.</li>
+							<li>JUnit은 예외가 발생하거나 assertThat()에서 실패하지 않고 테스트 메소드의 실행 이 완료되면 테스트가 성공했다고 인식한다.</li>
 						</ul>
 					</section>
 					
@@ -288,7 +291,7 @@ java.lang.AssertionError: Expected: is 김영민”
 	at springbook.dao .UserDaoTest.main(UserDaoTest .iava:36)
 FAILURES!!!
 Tests run: 1. Failures: 1 </code></pre>
-						<ul style="font-size:28px; line-height: 1.6; word-break: keep-all;">
+						<ul style="font-size:24px; line-height: 1.6; word-break: keep-all;">
 							<li>테스트가 실패하면 OK 대신 FAILURES!!라는 내용이 출력되고, 총 수행한 테스트 중에서 몇 개의 테스트가 실패했는지 보여준다.</li>
 							<li>assertThat()은 기대한 결과가 아니면 AssertionError를 던진다.</li>
 						</ul>
@@ -298,7 +301,7 @@ Tests run: 1. Failures: 1 </code></pre>
 					<section data-transition="concave" style="text-align: left;">
 						<h4>2.3.1 JUnit 테스트 실행 방법</h4>
 						<strong>IDE</strong>
-						<ul style="font-size:28px; line-height: 1.6; word-break: keep-all; ; margin-top:30px">
+						<ul style="font-size:24px; line-height: 1.6; word-break: keep-all; ; margin-top:30px">
 							<li>이클립스 run 메뉴의 Run As 항목 중에서 JUnit Test를 선택하면 테스트가 자동으로 실행된다.</li>
 							<li>JUnitCore를 이용할 때처럼 main() 메소드를 만들지 않아도 된다.</li>
 							<li>이클립스 Junit 테스트 결과</li>
@@ -307,7 +310,7 @@ Tests run: 1. Failures: 1 </code></pre>
 						</ul>
 					</section>
 					<section style="text-align: left;">
-						<ul style="font-size:28px; line-height: 1.6; word-break: keep-all;">
+						<ul style="font-size:24px; line-height: 1.6; word-break: keep-all;">
 							<li>테스트가 실패하면 Failure Trace 항목에 자세하게 나온다.</li>
 							<li>이클립스 Junit 테스트 결과</li>
 							<img width="450" data-src="./img/paint_2_2.png" alt="Junit 테스트"> <br>
@@ -329,7 +332,7 @@ Tests run: 1. Failures: 1 </code></pre>
 					</section>
 					<section style="text-align: left;">
 						<strong>deleteAll(), getCount() 추가</strong>
-						<ul style="font-size:28px; line-height: 1.6; word-break: keep-all; margin-top:30px">
+						<ul style="font-size:24px; line-height: 1.6; word-break: keep-all; margin-top:30px">
 							<li>deleteAll()
 								<ul>
 									<li>USER 테이블의 모든 레코드를 삭제</li>
@@ -349,7 +352,7 @@ Tests run: 1. Failures: 1 </code></pre>
 						</ul>
 					</section>
 					<section style="text-align: left;">
-						<ul style="font-size:28px; line-height: 1.6; word-break: keep-all; margin-top:30px">
+						<ul style="font-size:24px; line-height: 1.6; word-break: keep-all; margin-top:30px">
 							<li>getCount()
 								<ul>
 									<li>User 테이블의 레코드 개수를 돌려준다.</li>
@@ -379,7 +382,7 @@ Tests run: 1. Failures: 1 </code></pre>
 						<p>deleteAll() 직후에 항상 0이 나오는 것을 보고 deleteAll()의 기능도 바르게 동작한다고 생각할 수 있다.</p>
 					</section>
 					<section style="text-align: left;">
-						<ul style="font-size:28px; line-height: 1.6; word-break: keep-all; margin-top:30px">
+						<ul style="font-size:24px; line-height: 1.6; word-break: keep-all; margin-top:30px">
 							<li>deleteAll()과 getCount()가 추가된 addAndGet() 테스트
 						</ul>	
 <pre><code class="hljs" style="font-size:16px; line-height:1.2" data-trim contenteditable>@Test
@@ -416,7 +419,7 @@ public void addAndGet() throws SQLException {
 						<h4>2.3.3 포괄적인 테스트</h4>
 						<p>두 개 이상의 레코드를 add() 했을 때는 getCount()의 실행 결과가 어떻게 될까?</p>
 						<strong>getCount() 테스트</strong>
-						<ul style="font-size:28px; line-height: 1.6; word-break: keep-all; margin-top:30px">
+						<ul style="font-size:24px; line-height: 1.6; word-break: keep-all; margin-top:30px">
 							<li>테스트 시나리오
 								<ol>
 									<li>User 테이블의 데이터를 모두 지우고 getCount()로 레코드 개수가 0임을 확인</li>
@@ -510,14 +513,14 @@ public void addAndGet() throws SQLException {
 					</section>
 					<section style="text-align: left;">
 						<strong>get() 예외조건에 대한 테스트</strong>
-						<ol style="font-size:28px; line-height: 1.6; word-break: keep-all; margin-top:30px">
+						<ol style="font-size:24px; line-height: 1.6; word-break: keep-all; margin-top:30px">
 							<li>null과 같은 특별한 값을 리턴</li>
 							<li>id에 해당하는 정보를 찾을 수 없다고 예외를 던진다.</li>
 						</ol>
 						<p>스프링의 EmptyResultDataAccessException 예외 사용</p>
 					</section>
 					<section style="text-align: left;">
-						<P>존재하지 않는 id로 get()호출. <br>	이때 EmptyResultDataAccessException이 언져지면 성공, 아니면 실패.</P>
+						<P>존재하지 않는 id로 get()호출. <br>	이때 EmptyResultDataAccessException이 던져지면 성공, 아니면 실패.</P>
 <pre class="hljs" style="font-size:14px; line-height:1.2; margin:0" data-trim contenteditable><code>@Test(expected = EmptyResultDataAccessException.class) // 테스트 중 발생할 것으로 기대하는 예외클래스
 public void getUserFailure() throws SQLException {
 	ApplicationContext context = new GenericXmlApplicationContext ("applicationContext.xml");
@@ -593,8 +596,8 @@ public void getUserFailure() throws SQLException {
 					</section>
 					<section data-transition="concave" style="text-align: left;">
 						<strong>테스트 주도 개발</strong>
-						<p>만들고자 하는 기능의 내용을 담고 있으면서 만들어진 코드를 검증도 해줄 수 있도록 테스트 코드를 먼저 만들고, 테스트를 성공하게 해주는 코드를 작성하는 방식의 개발 방법을 <span style="color:red">테스트 주도 개발(TDD:Test Driven Development)</span>이라고 한다.</p>
-						<p>또는 테스트를 코드보다 먼저 작성한다고 해서 <span style="color:red">테스트 우선 개발(Test First Development)</span>이라고도 한다.</p>
+						<p>만들고자 하는 기능의 내용을 담고 있으면서 만들어진 코드를 검증도 해줄 수 있도록 테스트 코드를 먼저 만들고, 테스트를 성공하게 해주는 코드를 작성하는 방식의 개발 방법을 <span class="aquas">테스트 주도 개발(TDD:Test Driven Development)</span>이라고 한다.</p>
+						<p>또는 테스트를 코드보다 먼저 작성한다고 해서 <span class="aquas">테스트 우선 개발(Test First Development)</span>이라고도 한다.</p>
 						<p>TDD에서는 테스트를 작성하고 이를 성공시키는 코드를 만드는 작업의 주기를 가능한 한 짧게 가져가도록 권장한다.</p>
 					</section>
 				</section>
@@ -622,8 +625,8 @@ public class UserDaoTest {
 					</section>
 					<section>
 						<strong>JUnit 테스트 클래스 수행 순서</strong>
-						<ol style="font-size:28px; line-height: 1; word-break: keep-all; margin-top:30px;">
-							<li>테스트 클래스에서 @Test가붙은 public이고 void형이며 파라미터가 없는 테스트 메소드를모두찾는다. </li>
+						<ol style="font-size:24px; line-height: 1.4; word-break: keep-all; margin-top:30px;">
+							<li>테스트 클래스에서 @Test가붙은 public이고 void형이며 파라미터가 없는 테스트 메소드를 모두 찾는다. </li>
 							<li>테스트 클래스의 오브젝트를 하나 만든다.</li>
 							<li>@Before가 붙은 메소드가 있으면 실행한다. </li>
 							<li>@Test가 붙은 메소드를 하나 호출하고 테스트 결과를 저장해둔다.</li>
@@ -632,20 +635,54 @@ public class UserDaoTest {
 							<li>모든 테스트의 결과를 종합해서 돌려준다. </li>
 						</ol>
 						<p>서로 주고 받을 정보나 오브젝트가 있다면 인스턴스 변수를 이용해야 한다.</p>
-						<p>각 테스트 메소드를 실행할 때마다 테스트 클래스의 오브젝트를 새로 만든다.</p>
 					</section>
 					<section>
 						<strong>JUnit의 테스트 메소드 실행 방법</strong>
-						<br>
+						<p>각 테스트 메소드를 실행할 때마다 테스트 클래스의 오브젝트를 새로 만든다.</p>
 						<img width="550" data-src="./img/paint_2_4.png" alt="junit 테스트 실행방법">
-						<br>
 						<small>출처 : 토비의 스프링 3.1 Vol.1</small>
+					</section>
+					<section>
+						<strong>픽스처</strong>
+						<p>테스트를 수행하는 데 필요한 정보나 오브젝트를 <span class="aquas">픽스처(fixture)</span>라고 한다.</p>
+						<p>일반적으로 픽스처는 여러 테스트에서 반복적으로 사용되기 때문에 @Before 메소드를 이용해 생성해두면 편리하다.</p>
+						<p>UserDaoTest에서는 dao가 대표적인 픽스처다. 테스트 중에 add() 메소드에 전달하는 User 오브젝트들도 픽스처라고 볼 수 있다.</p>
+						<p>User 오브젝트들은 @before 메소드로 추출해보자.</p>
+					</section>
+					<section>
+						<strong>User 픽스처를 적용한 UserDaoTest</strong>
+<pre class="hljs" style="font-size:16px; line-height:1.2;" data-trim contenteditable><code>public class UserDaoTest {
+	private UserDao dao;
+	private User user1;
+	private User user2;
+	private User user3;
+	
+	@Before
+	public void setUp() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		this.dao = context.getBean("userDao", UserDao.class);
+		this.user1 = new User("yeongmin","yeongmin123","spring1");
+		this.user2 = new User("yeongmin2","yeongmin123222","spring2");
+		this.user3 = new User("yeongmin3","yeongmin1233333","spring3");
+	}
+}
+</code></pre>
+					</section>
+				</section>
+				<section>
+					<section data-transition="concave" style="text-align: left;">
+						<h3>2.4 스프링 테스트 적용</h3>
+						<p>@Before 메소드가 테스트 메소드 개수만큼 반복되기 때문에 애플리케이션 컨텍스트도 세 번 만들어진다.</p>
+						<p>빈이 많아지고 복잡해지면 애플리케이션 컨텍스트 생성에 적지 않은 시간이 걸릴 수 있다. 애플리케이션 컨텍스트가 만들어질 때는 모든 싱글톤 빈 오브젝트를 초기화한다.</p>
+						<p>어떤 빈은 오브젝트가 생성될 때 자체적인 초기화 작업을 진행해서 제법 많은 시간을 필요로 한다.</p>
+						<p>문제는 애플리케이션 컨텍스트가 초기화될 때 어떤 빈은 독자적으로 많은 리소스를 할당하거나 독립적인 스레드를 띄우기도 한다는 점이다.</p>
+						<p></p>
 					</section>
 				</section>
 				<section data-transition="concave" style="text-align: left;">
 					<section>
 						<h4>정리</h4>
-						<ul>
+						<ul style="font-size:14px; line-height: 1; word-break: keep-all; margin-top:30px;">
 							<li>테스트는 자동화돼야 하고, 빠르게 실행할 수 있어야 한다.</li>
 							<li>main() 테스트 대신 JUnit 프레임워크를 이용한 테스트 작성이 편하다.</li>
 							<li>테스트 결과는 일관성이 있어야 한다. 코드의 변경 없이 환경이나 테스트 실행 순서에 따라서 결과가 달라지면 안 된다.</li>
