@@ -61,3 +61,5 @@ ul, ol {
     font-size: 16px !important;
     line-height: 1 !important
 }
+
+.reveal .slide-number{right:auto; bottom:auto; font-size:20px; right:0; top:0; padding:10px;}

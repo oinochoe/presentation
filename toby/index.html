@@ -70,7 +70,7 @@
 					<section data-transition="concave">
 						<h3>2.1 UserDaoTest 다시 보기</h3>
 						<h4>2.1.1 테스트의 유용성</h4>
-						<p>1장에서 UserDao의 클래스를 책임에 따라 이리저리 분리하고, 인터페이스를 도입하고, 오브젝트 팩토리를 통해 생성하도록 만들고, 또 스프링의 DI 방식을 XML 설정 파일까지 써서 적용했을 때 <span class="fragment highlight-red">그것이 처음과 동일한 기능을 수행함을 보장해줄 수 있는 방법에는 어떤 것이 있겠는가?</span></p>
+						<p>1장에서 UserDao의 클래스를 책임에 따라 이리저리 분리하고, 인터페이스를 도입하고, 오브젝트 팩토리를 통해 생성하도록 만들고, 또 스프링의 DI 방식을 XML 설정 파일까지 써서 적용했을 때 <span class="aquas">그것이 처음과 동일한 기능을 수행함을 보장해줄 수 있는 방법에는 어떤 것이 있겠는가?</span></p>
 					</section>
 				</section>
 				<section>
@@ -855,7 +855,46 @@ public class UserDaoTest {
 						<p>테스트를 작성하면서 학습하면 다음과 같은 장점이 있다.</p>
 						<ul>
 							<li>다양한 조건에 따른 기능을 손쉽게 확인해볼 수 있다.</li>
+							<li>학습 테스트 코드를 개발 중에 참고할 수 있다.</li>
+							<li>프레임워크나 제품을 업그레이드할 때 호환성 검증을 도와준다.</li>
+							<li>테스트 작성에 대한 좋은 훈련이 된다.</li>
+							<li>새로운 기술을 공부하는 과정이 즐거워진다.(cd에 담긴 예제 프로젝트 내의 springbook.learnngtest 패키지)</li>
+
 						</ul>
+					</section>
+				</section>
+				<section data-transition="concave" class="many">
+					<section>
+						<h4>2.5.2 학습 테스트 예제</h4>
+						<strong>JUnit 테스트 오브젝트 테스트</strong>
+						<pre class="hljs" data-trim><code>package springbook.learningtest.junit;
+...
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.sameInstance;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
+
+public class JUnitTest {
+	static JUnitTest testObject;
+
+	@Test public void test1() { //sameInstance()는 실제로 같은 오브젝트인지 비교한다.
+        assertThat(testObjects, is(not(sameInstance(testObject))));
+        testObject = this;
+	}
+	
+	@Test public void test2() {
+        assertThat(testObjects, is(not(sameInstance(testObject))));
+        testObject = this;
+	}
+	
+	@Test public void test3() {
+        assertThat(testObjects, is(not(sameInstance(testObject))));
+        testObject = this;
+    }
+}</code></pre>
+<p>이 방식의 문제점은 직전 테스트에서 만들어진 테스트 오브젝트와만 비교한다는 것이다. 좀 더 개선해보자.</p>
 					</section>
 				</section>
 				<section data-transition="concave" class="many">
@@ -896,6 +935,7 @@ public class UserDaoTest {
 				//Add options to print PDF
 				pdfSeparateFragments:false,
 				pdf:true,
+				slideNumber: 'c/t' ,
 				pdfMaxPagesPerSlide: 1,
 				// Parallax background image
 				//parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg', // e.g. "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
@@ -910,7 +950,7 @@ public class UserDaoTest {
 				parallaxBackgroundVertical: 50,
 
                 transition: 'slide', // none/fade/slide/convex/concave/zoom
-
+				// Shows the slide number using default formatting
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
