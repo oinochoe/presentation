@@ -832,8 +832,8 @@ public class UserDaoTest {
 					</section>
 					<section>
 						<strong>DI를 이용한 테스트 방법 선택</strong>
-						<p>DI를 테스트에 이용하는 세 가지 방법, SingleConnectionDataSource, 테스트를 위한 별도의 DI, 컨테이너 없는 DI 중에 어떤 방법이 제일 좋을까? <br> 세 가지 방법 모두 장단점이 있고 상황에 따라 유용하게 쓸 수 있다. <br> 항상 스프링 컨테이너 없이 테스트할 수 있는 방법을 가장 우선적으로 고려하자. 이 방법이 수행 속도가 가장 빠르고 테스 자체가 간결하다.</p>
-						<p>여러 오브젝트와 복잡한 의존관계를 갖고 있을 경우는 스프링의 설정을 이용한 SimpleDriverDataSource 설정 파일을 이용한 DI 방식 테스트가 유리하다.</p>
+						<p>DI를 테스트에 이용하는 세 가지 방법, SingleConnectionDataSource, 테스트를 위한 별도의 DI, 컨테이너 없는 DI 중에 어떤 방법이 제일 좋을까? <br> 세 가지 방법 모두 장단점이 있고 상황에 따라 유용하게 쓸 수 있다. <br> 항상 스프링 컨테이너 없이 테스트할 수 있는 방법을 가장 우선적으로 고려하자. 이 방법이 수행 속도가 가장 빠르고 테스트 자체가 간결하다.</p>
+						<p>여러 오브젝트와 복잡한 의존관계를 갖고 있을 경우는 스프링의 설정을 이용한 DI 방식 테스트가 유리하다. test-applicationContext.xml 처럼 테스트 전용 설정파일을 따로 사용하는 편이 좋다.</p>
 						<p>때로는 예외적인 의존관계를 강제로 구성해서 테스트해야 할 경우가 있다. 이때는 컨텍스트에서 DI받은 오브젝트에 다시 테스트 코드로 수동 DI 해서 테스트하는 방법을 사용하면 된다. @DirtiesContext를 이용한 방법이다.</p>
 					</section>
 				</section>
@@ -858,9 +858,10 @@ public class UserDaoTest {
 							<li>학습 테스트 코드를 개발 중에 참고할 수 있다.</li>
 							<li>프레임워크나 제품을 업그레이드할 때 호환성 검증을 도와준다.</li>
 							<li>테스트 작성에 대한 좋은 훈련이 된다.</li>
-							<li>새로운 기술을 공부하는 과정이 즐거워진다.(cd에 담긴 예제 프로젝트 내의 springbook.learnngtest 패키지)</li>
-
+							<li>새로운 기술을 공부하는 과정이 즐거워진다.</li>
 						</ul>
+						
+						<p>※ 참고자료 : cd에 담긴 예제 프로젝트 내의 springbook.learnngtest 패키지</p>
 					</section>
 				</section>
 				<section data-transition="concave" class="many">
@@ -895,6 +896,93 @@ public class JUnitTest {
     }
 }</code></pre>
 <p>이 방식의 문제점은 직전 테스트에서 만들어진 테스트 오브젝트와만 비교한다는 것이다. 좀 더 개선해보자.</p>
+					</section>
+					<section>
+						<p>세 개의 테스트 오브젝트 중 어떤 것도 중복이 되지 않는다는 것을 확인하도록 검증 방법을 바꾼다.</p>
+						<pre class="hljs" data-trim><code>import static org.junit.matchers.JUnitMatchers.hasItem;
+...
+public class JUnitTest {
+	static Set&lt;JUnitTest&gt; testObjects = new HashSet&lt;JUnitTest&gt;();
+	
+	@Test public void test1() {
+		assertThat(testObjects, is(not(hasItem(this))));
+		testObjects.add(this);	
+	}
+
+	@Test public void test2() {
+		assertThat(testObjects, is(not(hasItem(this))));
+		testObjects.add(this);	
+	}
+	...</code></pre>
+						<p>먼저 스태틱 변수로 테스트 오브젝트를 저장할 수 있는 컬렉션을 만들어두고 등록되어있는지 확인하고, 없으면 자기자신을 추가한다. 순서에 상관없이 오브젝트 중복여부를 확인할 수 있다.</p>
+					</section>
+					<section>
+						<strong>스프링 테스트 컨텍스트 테스트</strong>
+						<p>스프링의 테스트용 애플리케이션 컨텍스트는 테스트 개수에 상관없이 한 개만 만들어지고 모든 테스트에서 공유된다.</p>
+						<pre class="hljs" data-trim><code><!--junit.xml-->
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd"&gt;
+&lt;/beans&gt;</code></pre>
+							<p>@JunitTest에 @RunWith와 @ContextConfiguration 어노테이션을 추가하고, 방금 만든 설정파일을 사용하는 텍스트 컨텍스트를 적용한다.</p>
+					</section>
+					<section>
+						<strong>스프링 테스트 컨텍스트에 대한 학습 테스트</strong>
+						<pre class="hljs" data-trim><code>import statc org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertTrue;
+import static org.junit.matchers.JUnitMatchers.either;
+...
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration
+public class JUnitTest {
+	@Autowired ApplicationContext context; // 테스트 컨텍스트가 매번 주입해주는 애플리케이션 컨텍스트는 항상 같은 오브젝트인지 테스트로 확인해본다.
+	
+	static Set&lt;JUnitTest&gt; testObjects = new HashSet&lt;JUnitTest&gt;();
+	static ApplicationContext contextObject = null;
+
+	@Test public void test1() {
+		assertThat(testObjects, is(not(hasItem(this))));
+		testObjects.add(this);
+		
+		//assertThat사용
+		assertThat(contextObject == null || contextObject == this.context, is(true));
+		contextObject = this.context;
+	}
+
+	@Test public void test2() {
+		assertThat(testObjects, is(not(hasItem(this))));
+		testObjects.add(this);
+
+		//assertTrue사용, is(true) 구문이 사라짐.
+		assertTrue(contextObject == null || contextObject == this.context);
+		contextObject = this.context;
+	}
+
+	@Test public void test3() {
+		assertThat(testObjects, is(not(hasItem(this))));
+		testObjects.add(this);
+
+		//assertThat 사용, 조건문 대신 matcher 조합 사용. 
+		assertThat(contextObject, either(is(nullValue())).or(is(this.context)));
+		contextObject = this.context;
+	}
+}</code></pre>
+						<p>테스트 메소드에서 매번 동일한 애플리케이션 컨텍스트가 context 변수에 주입됐는지 확인한다. </p>
+					</section>
+				</section>
+				<section data-transition="concave" class="many">
+					<section>
+						<h4>2.5.3 버그 테스트</h4>
+						<p>버그 테스트는 일단 실패하도록 만들어야 한다. 버그가 원인이 되서 테스트가 실패하는 코드를 만드는 것이다.</p>
+						<strong>버그 테스트의 필요성과 장점</strong>
+						<ul>
+							<li>테스트의 완성도를 높여준다.</li>
+							<li>버그의 내용을 명확하게 분석하게 해준다.</li>
+							<li>기술적인 문제를 해결하는데 도움이 된다.</li>
+						</ul>
 					</section>
 				</section>
 				<section data-transition="concave" class="many">
