@@ -693,7 +693,7 @@ public class UserDaoTest {
 
 	@Before
 	public void setUp() {
-		this.dao = this.context.getBean("userDao'’, UserDao.class);
+		this.dao = this.context.getBean("userDao", UserDao.class);
 		...
 	}
 	...
@@ -734,7 +734,7 @@ springbook.dao.UserDaoTest@15eÐc2b</code></pre>
 					<section>
 						<strong>테스트 클래스의 컨텍스트 공유</strong>
 						<p>스프링 애플리케이션 컨텍스트는 초기화할 때 자기 자신도 빈으로 등록한다. 따라서 애플리케이션 컨텍스트에는 ApplicationContext 타입의 빈이 존재하는 셈이고 DI도 가능한 것이다.</p>
-						<p>따라서 getBean()을 사용하지 않고 아예 UserDao 비늘 직접 DI 받을 수도 있다.</p>
+						<p>따라서 getBean()을 사용하지 않고 아예 UserDao 빈을 직접 DI 받을 수도 있다.</p>
 						<pre class="hljs" data-trim><code>//UserDao를 직접 DI 받도록 만든 테스트
 ...
 public class UserDaoTest {
@@ -810,7 +810,7 @@ public class UserDaoTest {
 					</section>
 					<section>
 						<strong>컨테이너 없는 DI 테스트</strong>
-						<p>마지막으로 살펴볼, DI를 테스트에 이용하는 방법은 아예 스프링 컨테이너를 사용하지 않고 테스트를 만드는 것이다. DI만을 이용해서 만들어진 테스트 코드를 살펴보자. </p>
+						<p>마지막으로 살펴볼 DI를 테스트에 이용하는 방법은 아예 스프링 컨테이너를 사용하지 않고 테스트를 만드는 것이다. DI만을 이용해서 만들어진 테스트 코드를 살펴보자. </p>
 						<pre class="hljs" data-trim><code>//애플리케이션 컨텍스트 없는 DI 테스트
 public class UserDaoTest {
 	UserDao dao; // @Autowired가 없다.
@@ -964,7 +964,8 @@ public class JUnitTest {
 				<section data-transition="concave" class="many">
 					<section>
 						<h4>2.5.3 버그 테스트</h4>
-						<p>버그 테스트는 일단 실패하도록 만들어야 한다. 버그가 원인이 되서 테스트가 실패하는 코드를 만드는 것이다.</p>
+						<p>버그 테스트는 일단 실패하도록 만들어야 한다. <br>
+							버그가 원인이 되서 테스트가 실패하는 코드를 만드는 것이다.</p>
 						<strong>버그 테스트의 필요성과 장점</strong>
 						<ul>
 							<li>테스트의 완성도를 높여준다.</li>
