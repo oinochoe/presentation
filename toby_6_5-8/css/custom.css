@@ -1,0 +1,94 @@
+/* custom */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+strong {
+    word-break: keep-all;
+    font-size: 28px !important;
+    display: block;
+}
+
+p {
+    line-height: 1.6 !important;
+    font-size: 22px !important;
+    word-break: keep-all;
+}
+
+.reveal pre {
+    margin-left: 0px;
+}
+
+ul>li~li,
+ol>li~li {
+    margin-top: 20px !important
+}
+
+ol ul>li~li,
+ul ol>li~li {
+    margin-top: 0 !important
+}
+
+.reveal small {
+    font-size: 24px;
+}
+
+img {
+    display: block
+}
+
+.aquas {
+    color: aqua
+}
+
+section {
+    text-align: left;
+}
+
+.hljs {
+    font-size: 14px !important;
+    line-height: 1.2 !important
+}
+
+table {
+    font-size: 20px !important;
+    word-break: keep-all
+}
+
+ul,
+ol {
+    font-size: 20px !important;
+    word-break: keep-all;
+    margin-top: 20px !important;
+    line-height: 1.6 !important
+}
+
+.many ul {
+    font-size: 16px !important;
+    line-height: 1 !important
+}
+
+.reveal .slide-number {
+    right: auto;
+    bottom: auto;
+    font-size: 20px;
+    right: 0;
+    top: 0;
+    padding: 10px;
+}
+
+/* body */
+body {
+    background: url(../img/bg2.png);
+
+}
+
+.reveal {
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.reveal ul li{
+    line-height: 1.8;
+}
+
+
+*{
+    font-family: 'Noto Sans KR', sans-serif !important;
+}
