@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>02_TEST</title>
+	<title>06장 AOP</title>
 	<meta name="description" content="`TOBY BOOK` Presentation">
 	<meta name="author" content="Yeongmin Kim">
 
@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no minimal-ui">
 
 	<link rel="stylesheet" href="css/reveal.css">
-	<link rel="stylesheet" href="css/theme/night.css" id="theme">
+	<link rel="stylesheet" href="css/theme/ngle.css" id="theme">
 
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -35,37 +35,24 @@
 </head>
 
 <body>
-
+	<div class="logo"><img src="./img/logo_dark.png" alt=""></div>
 	<div class="reveal">
 		<!-- Any section element inside of this container is displayed as a slide -->
 		<div class="slides">
 			<section>
-				<h1>2장 테스트</h1>
+				<h1>6장 AOP</h1>
 				<p>
-					<small>Created by <a href="#none">Yeongmin Kim</a></small>
+					<small>Created by <a href="https://github.com/oinochoe/" target="_blank">Yeongmin Kim</a></small>
 				</p>
 			</section>
 			<section data-transition="convex">
-				<h2>LIST</h2>
+				<h2>목차</h2>
 				<br>
-				<p>
-					<small>2.1 USERDAOTEST 다시 보기</small>
-				</p>
-				<p>
-					<small>2.2 USERDAOTEST 개선</small>
-				</p>
-				<p>
-					<small>2.3 개발자를 위한 테스팅 프레임워크 JUNIT</small>
-				</p>
-				<p>
-					<small>2.4 스프링 테스트 적용</small>
-				</p>
-				<p>
-					<small>2.5 학습 테스트로 배우는 스프링</small>
-				</p>
-				<p>
-					<small>2.6 정리</small>
-				</p>
+				<p><small></small></p>
+				<p><small></small></p>
+				<p><small></small></p>
+				<p><small></small></p>
+				<p><small></small></p>
 			</section>
 
 			<section>
@@ -239,13 +226,7 @@ public class UserDaoTest {
 
 				<section>
 					<strong>JUnit을 적용한 UserDaoTest</strong>
-					<pre><code class="hljs" data-trim><!--pom.xml-->
-<dependency>
-	<groupId>junit</groupId>
-	<artifactId>junit</artifactId>
-	<version>4.12</version>
-	<scope>test</scope>
-</dependency></code></pre>
+					<pre><code class="hljs" data-trim><!--pom.xml--></code></pre>
 					<pre><code class="hljs" data-trim>//UserDaoTest
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

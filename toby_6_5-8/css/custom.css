@@ -1,5 +1,18 @@
 /* custom */
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+
+.logo {
+    position: fixed;
+    left: 2%;
+    top: 4%;
+    z-index: 333;
+    width: 150px;
+}
+
+.logo img {
+    width: 100%;
+}
+
 strong {
     word-break: keep-all;
     font-size: 28px !important;
@@ -81,14 +94,14 @@ body {
 }
 
 .reveal {
-    background-color: rgba(0, 0, 0, .6);
+    /* background-color: rgba(0, 0, 0, .2); */
 }
 
-.reveal ul li{
+.reveal ul li {
     line-height: 1.8;
 }
 
 
-*{
+* {
     font-family: 'Noto Sans KR', sans-serif !important;
 }
