@@ -48,7 +48,8 @@ img {
 }
 
 .aquas {
-    color: aqua
+    color: aqua;
+    text-shadow: #1F6167 1px 1px 1px;
 }
 
 section {
