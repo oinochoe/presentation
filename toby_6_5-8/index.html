@@ -17,7 +17,6 @@
 
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
-
 	<link rel="stylesheet" href="css/custom.css">
 
 	<!-- Printing and PDF exports -->
@@ -57,10 +56,9 @@
 
 			<section>
 				<section data-transition="concave">
-					<h3>2.1 UserDaoTest 다시 보기</h3>
-					<h4>2.1.1 테스트의 유용성</h4>
-					<p>1장에서 UserDao의 클래스를 책임에 따라 이리저리 분리하고, 인터페이스를 도입하고, 오브젝트 팩토리를 통해 생성하도록 만들고, 또 스프링의 DI 방식을 XML 설정 파일까지 써서 적용했을 때
-						<span class="aquas">그것이 처음과 동일한 기능을 수행함을 보장해줄 수 있는 방법에는 어떤 것이 있겠는가?</span></p>
+					<!-- 
+					<iframe src="http://tpcg.io/77g1Z3
+				" frameborder="0"></iframe> -->
 				</section>
 			</section>
 			<section>
@@ -862,7 +860,7 @@ public class UserDaoTest {
 					<p>※ 참고자료 : cd에 담긴 예제 프로젝트 내의 springbook.learnngtest 패키지</p>
 				</section>
 			</section>
-			<section data-transition="concave" class="many">
+			<section data-transition="concave">
 				<section>
 					<h4>2.5.2 학습 테스트 예제</h4>
 					<strong>JUnit 테스트 오브젝트 테스트</strong>
@@ -1018,7 +1016,7 @@ public class JUnitTest {
 
 				</section>
 			</section>
-			<section data-background="http://i.giphy.com/90F8aUepslB84.gif" data-transition="concave">
+			<section class="no-logo" data-background="http://i.giphy.com/90F8aUepslB84.gif" data-transition="concave">
 				<h1>끝</h1>
 			</section>
 		</div>
@@ -1091,6 +1089,20 @@ public class JUnitTest {
 					async: true
 				}
 			]
+		});
+		Reveal.addEventListener('ready', function (event) {
+			if (event.currentSlide.classList == 'no-logo present') {
+				document.body.classList.add('off');
+			} else {
+				document.body.classList.remove('off');
+			}
+		});
+		Reveal.addEventListener('slidechanged', function (event) {
+			if (event.currentSlide.classList == 'no-logo present') {
+				document.body.classList.add('off');
+			} else {
+				document.body.classList.remove('off');
+			}
 		});
 	</script>
 

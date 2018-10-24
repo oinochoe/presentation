@@ -1,17 +1,13 @@
 /* custom */
+
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
+/* font */
 
-.logo {
-    position: fixed;
-    left: 2%;
-    top: 4%;
-    z-index: 333;
-    width: 150px;
+* {
+    font-family: 'Noto Sans KR', sans-serif !important;
 }
 
-.logo img {
-    width: 100%;
-}
+/* base */
 
 strong {
     word-break: keep-all;
@@ -25,30 +21,20 @@ p {
     word-break: keep-all;
 }
 
-.reveal pre {
-    margin-left: 0px;
-}
-
-ul>li~li,
-ol>li~li {
-    margin-top: 20px !important
-}
-
-ol ul>li~li,
-ul ol>li~li {
-    margin-top: 0 !important
-}
-
 .reveal small {
     font-size: 24px;
+}
+
+.aquas {
+    color: aqua
 }
 
 img {
     display: block
 }
 
-.aquas {
-    color: aqua
+.reveal pre {
+    margin-left: 0px;
 }
 
 section {
@@ -65,18 +51,46 @@ table {
     word-break: keep-all
 }
 
-ul,
-ol {
+/* logo */
+
+.logo {
+    position: fixed;
+    left: 2%;
+    top: 4%;
+    z-index: 333;
+    width: 150px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.off .logo{
+    display:none;
+}
+
+/* list */
+
+ul, ol {
     font-size: 20px !important;
     word-break: keep-all;
     margin-top: 20px !important;
     line-height: 1.6 !important
 }
 
-.many ul {
-    font-size: 16px !important;
-    line-height: 1 !important
+.reveal ul li {
+    line-height: 1.8;
 }
+
+ul>li~li, ol>li~li {
+    margin-top: 20px !important
+}
+
+ol ul>li~li, ul ol>li~li {
+    margin-top: 0 !important
+}
+
+/* slide-num */
 
 .reveal .slide-number {
     right: auto;
@@ -87,21 +101,15 @@ ol {
     padding: 10px;
 }
 
-/* body */
+/* body - ngle */
+
 body {
     background: url(../img/bg2.png);
-
 }
 
-.reveal {
-    /* background-color: rgba(0, 0, 0, .2); */
-}
+/* iframe */
 
-.reveal ul li {
-    line-height: 1.8;
-}
-
-
-* {
-    font-family: 'Noto Sans KR', sans-serif !important;
+iframe {
+    width: 100%;
+    height: calc(100vh - 100px)
 }
