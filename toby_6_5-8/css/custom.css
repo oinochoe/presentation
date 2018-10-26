@@ -4,7 +4,7 @@
 /* body - ngle */
 
 body {
-    background: url(../img/bg2.png);
+    background: url(../img/bg2.png) repeat-y;
 }
 
 /* font */
@@ -160,17 +160,14 @@ iframe {
 }
 
 @media print {
-    body {
-        background: none;
-    }
     .logo {
         display: none;
     }
     .no-logo {
         display: none;
     }
-    .reveal section{
-        background:url(../img/bg2.png)
+    body {
+        background: #1AAFBA;
     }
 }
 
