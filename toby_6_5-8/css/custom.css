@@ -160,11 +160,17 @@ iframe {
 }
 
 @media print {
+    body {
+        background: none;
+    }
     .logo {
         display: none;
     }
     .no-logo {
         display: none;
+    }
+    .reveal section{
+        background:url(../img/bg2.png)
     }
 }
 
