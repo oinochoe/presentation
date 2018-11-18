@@ -304,7 +304,12 @@ h3 {
   height: 100%;
   font-size: 20px;
   /* font-family: 'Open Sans'; */
-  font-family: 'Titan One', cursive; }
+  font-family: 'Titan One', cursive;
+  /* @media screen and (max-width: 640px) {
+      &:focus span{
+          animation: bounce .8s ease infinite alternate;
+      }
+  } */ }
 h3 a {
   display: flex;
   align-items: center;
@@ -326,8 +331,8 @@ h3 span {
 h3:hover span {
   animation: bounce .8s ease infinite alternate; }
 @media screen and (max-width: 640px) {
-  h3:focus span {
-    animation: bounce .8s ease infinite alternate; } }
+  h3:hover span {
+    animation: none; } }
 h3 span:nth-child(2) {
   animation-delay: .1s; }
 h3 span:nth-child(3) {
