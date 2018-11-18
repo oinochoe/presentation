@@ -121,8 +121,8 @@ table { border-collapse: collapse; border-spacing: 0; }
 @-webkit-keyframes text { 100% { stroke-dashoffset: -400; } }
 h3 { display: block; text-align: center; font-size: 20px; /* font-family: 'Open Sans'; */ font-family: 'Titan One', cursive; }
 h3 a { display: block; text-decoration: none; }
-h3 span { position: relative; top: 20px; display: inline-block; font-family: 'Titan One', cursive; font-size: 80px; color: #FFF; text-shadow: 0 1px 0 #CCC, 0 2px 0 #CCC, 0 3px 0 #CCC, 0 4px 0 #CCC, 0 5px 0 #CCC, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4); }
-@media screen and (max-width: 640px) { h3 span { font-size: 35px; } }
+h3 span { position: relative; top: 20px; display: inline-block; animation: bounce .8s ease infinite alternate; font-family: 'Titan One', cursive; font-size: 80px; color: #FFF; text-shadow: 0 1px 0 #CCC, 0 2px 0 #CCC, 0 3px 0 #CCC, 0 4px 0 #CCC, 0 5px 0 #CCC, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4); }
+@media screen and (max-width: 640px) { h3 span { font-size: 35px; top: 8px; animation: none; } }
 h3 span:nth-child(2) { animation-delay: .1s; }
 h3 span:nth-child(3) { animation-delay: .2s; }
 h3 span:nth-child(4) { animation-delay: .3s; }
