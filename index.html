@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>Young Man</title>
+	<meta name="description" content="index">
+	<meta name="author" content="Yeongmin Kim">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no minimal-ui">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="//s.cdpn.io/6859/tween.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.3/jquery.mousewheel.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
+	<script src="//s.cdpn.io/6859/paper.js"></script>
+	<script defer src="js/index.js"></script>
+</head>
+
+<body>
+	
+		<div class="suggest-l"></div>
+		<div class="iphone-l">
+		  <div class="screen-ll">
+			<div id="wrapper">
+			  <div class="menu-l">
+				<canvas data-colors="#69D2E7:#A7DBD8:#E0E4CC:#F38630:#FA6900:#C02942:#542437:#53777A:#ECD078:#FE4365" data-sectionHeight="200" data-contentId="js-content" id="myCanvas1" class="canvas-e"></canvas>
+				<div id="js-content" class="content-ll">
+				  <div class="section-b"></div>
+				  <div class="section-b is-watermellon"></div>
+				  <div class="section-b is-fish"></div>
+				  <div class="section-b is-donut"></div>
+				  <div class="section-b is-icecreame"></div>
+				  <div class="section-b is-bananas"></div>
+				  <div class="section-b is-drink"></div>
+				  <div class="section-b is-candies"></div>
+				  <div class="section-b is-pizza"></div>
+				  <div class="section-b is-china"></div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	
+	<section class="container">
+		<h3>
+			<span class="animation-container">
+				<svg viewBox="0 0 450 60">
+					<symbol id="text">
+						<text text-anchor="middle" x="50%" y="50%">SKILLS</text>
+					</symbol>
+					<use xlink:href="#text" class="text"></use>
+					<use xlink:href="#text" class="text"></use>
+					<use xlink:href="#text" class="text"></use>
+					<use xlink:href="#text" class="text"></use>
+				</svg>
+			</span>
+		</h3>
+		<div class="spec">
+			<!-- HTML Chart -->
+			<figure class="chart" data-percent="75">
+				<figcaption>HTML</figcaption>
+				<img class="html" src="img/html5.svg">
+				<svg width="200" height="200">
+					<circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)" />
+				</svg>
+			</figure>
+
+			<!-- CSS Chart -->
+			<figure class="chart" data-percent="75">
+				<figcaption>CSS</figcaption>
+				<img class="css" src="img/css3.svg">
+				<svg width="200" height="200">
+					<circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)" />
+				</svg>
+			</figure>
+
+			<!-- Javascript Chart -->
+			<figure class="chart" data-percent="50">
+				<figcaption>Javascript</figcaption>
+				<img class="javascript" src="img/javascript.svg">
+				<svg width="200" height="200">
+					<circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)" />
+				</svg>
+			</figure>
+		</div>
+	</section>
+</body>
+
+</html>
