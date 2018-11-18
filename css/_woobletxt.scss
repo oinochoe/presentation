@@ -1,15 +1,24 @@
 h3 {
     display: block;
     text-align: center;
+    height: 100%;
     font-size: 20px;
     /* font-family: 'Open Sans'; */
     font-family: 'Titan One', cursive;
-    a{display: block; text-decoration: none}
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-decoration: none;
+    }
+
     span {
         position: relative;
-        top: 20px;
         display: inline-block;
-        animation: bounce .8s ease infinite alternate;
+        /* animation: bounce .8s ease infinite alternate; */
+        animation: none;
         font-family: 'Titan One', cursive;
         font-size: 80px;
         color: #FFF;
@@ -23,13 +32,22 @@ h3 {
             0 8px 0 transparent,
             0 9px 0 transparent,
             0 10px 10px rgba(0, 0, 0, .4);
-            @media screen and (max-width:640px) {
-                font-size:35px;
-                top:8px;
-                animation: none
-            }
+
+        @media screen and (max-width: 640px) {
+            font-size: 40px;
+        }
+
     }
-    
+
+    &:hover span {
+        animation: bounce .8s ease infinite alternate;
+    }
+
+    @media screen and (max-width: 640px) {
+        &:focus span{
+            animation: bounce .8s ease infinite alternate;
+        }
+    }
 
     span:nth-child(2) {
         animation-delay: .1s;
@@ -59,18 +77,20 @@ h3 {
         animation-delay: .7s;
     }
 }
+
 @keyframes bounce {
     100% {
-        top: -20px;
+        transform:translateY(-100%);
+        will-change: auto;
         text-shadow: 0 1px 0 #CCC,
-                    0 2px 0 #CCC,
-                    0 3px 0 #CCC,
-                    0 4px 0 #CCC,
-                    0 5px 0 #CCC,
-                    0 6px 0 #CCC,
-                    0 7px 0 #CCC,
-                    0 8px 0 #CCC,
-                    0 9px 0 #CCC,
-                    0 50px 25px rgba(0, 0, 0, .2);
+            0 2px 0 #CCC,
+            0 3px 0 #CCC,
+            0 4px 0 #CCC,
+            0 5px 0 #CCC,
+            0 6px 0 #CCC,
+            0 7px 0 #CCC,
+            0 8px 0 #CCC,
+            0 9px 0 #CCC,
+            0 50px 25px rgba(0, 0, 0, .2);
     }
 }
