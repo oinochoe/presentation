@@ -16,76 +16,129 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
 	<script src="//s.cdpn.io/6859/paper.js"></script>
 	<script defer src="js/index.js"></script>
+	<script>
+		$(document).ready(function () {
+			setTimeout(() => {
+				$('.loader').stop().fadeOut(500);
+			}, 2000);
+		})
+	</script>
 </head>
 
 <body>
-	
-		<div class="suggest-l"></div>
-		<div class="iphone-l">
-		  <div class="screen-ll">
-			<div id="wrapper">
-			  <div class="menu-l">
-				<canvas data-colors="#69D2E7:#A7DBD8:#E0E4CC:#F38630:#FA6900:#C02942:#542437:#53777A:#ECD078:#FE4365" data-sectionHeight="200" data-contentId="js-content" id="myCanvas1" class="canvas-e"></canvas>
-				<div id="js-content" class="content-ll">
-				  <div class="section-b"></div>
-				  <div class="section-b is-watermellon"></div>
-				  <div class="section-b is-fish"></div>
-				  <div class="section-b is-donut"></div>
-				  <div class="section-b is-icecreame"></div>
-				  <div class="section-b is-bananas"></div>
-				  <div class="section-b is-drink"></div>
-				  <div class="section-b is-candies"></div>
-				  <div class="section-b is-pizza"></div>
-				  <div class="section-b is-china"></div>
-				</div>
-			  </div>
+	<div class="loader">
+		<!-- Plasma -->
+		<svg width="0" height="0">
+			<filter id="gooey-plasma">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur" />
+				<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -16" result="goo" />
+			</filter>
+		</svg>
+		<div class="plasma">
+			<div class="gooey-container">
+				<span class="bubble"></span>
+				<span class="bubble"></span>
+				<span class="bubble"></span>
+				<span class="bubble"></span>
+				<span class="bubble"></span>
+				<span class="bubble"></span>
 			</div>
-		  </div>
 		</div>
-	
-	<section class="container">
-		<h3>
-			<span class="animation-container">
-				<svg viewBox="0 0 450 60">
-					<symbol id="text">
-						<text text-anchor="middle" x="50%" y="50%">SKILLS</text>
-					</symbol>
-					<use xlink:href="#text" class="text"></use>
-					<use xlink:href="#text" class="text"></use>
-					<use xlink:href="#text" class="text"></use>
-					<use xlink:href="#text" class="text"></use>
-				</svg>
-			</span>
-		</h3>
-		<div class="spec">
-			<!-- HTML Chart -->
-			<figure class="chart" data-percent="75">
-				<figcaption>HTML</figcaption>
-				<img class="html" src="img/html5.svg">
-				<svg width="200" height="200">
-					<circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)" />
-				</svg>
-			</figure>
-
-			<!-- CSS Chart -->
-			<figure class="chart" data-percent="75">
-				<figcaption>CSS</figcaption>
-				<img class="css" src="img/css3.svg">
-				<svg width="200" height="200">
-					<circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)" />
-				</svg>
-			</figure>
-
-			<!-- Javascript Chart -->
-			<figure class="chart" data-percent="50">
-				<figcaption>Javascript</figcaption>
-				<img class="javascript" src="img/javascript.svg">
-				<svg width="200" height="200">
-					<circle class="outer" cx="95" cy="95" r="85" transform="rotate(-90, 95, 95)" />
-				</svg>
-			</figure>
+		<!--/Plasma -->
+	</div>
+	<div class="jelly-layout">
+		<div id="jelly-wrap">
+			<div class="menu-box">
+				<canvas data-colors="#14646B:#2C7476:#83ACAE:#639599:#001D4A:#C02942:#542437:#53777A:#ECD078:#FE4365"
+				 data-sectionHeight="200" data-contentId="jelly-content" id="jellyCanvas"></canvas>
+				<div class="jelly-content">
+					<!-- <div class="jelly-section">
+						<section class="container">
+							<h3>
+								<a href="#none" class="animation-container">
+									<svg viewBox="0 0 450 60">
+										<symbol id="text">
+											<text text-anchor="middle" x="50%" y="50%">Young Man</text>
+										</symbol>
+										<use xlink:href="#text" class="text"></use>
+										<use xlink:href="#text" class="text"></use>
+										<use xlink:href="#text" class="text"></use>
+										<use xlink:href="#text" class="text"></use>
+									</svg>
+								</a>
+							</h3>
+						</section>
+					</div> -->
+					<div class="jelly-section">
+						<section class="container">
+							<h3>
+								<a href="#none" class="animation-container">
+									<span>S</span>
+									<span>P</span>
+									<span>R</span>
+									<span>I</span>
+									<span>N</span>
+									<span>G</span>
+								</a>
+							</h3>
+						</section>
+					</div>
+					<div class="jelly-section">
+						<section class="container">
+							<h3>
+								<a href="./toby_chapter_2_test/index.html" target="_blank" class="animation-container">
+									<span>0</span>
+									<span>2</span>
+									<span>&nbsp;</span>
+									<span>T</span>
+									<span>E</span>
+									<span>S</span>
+									<span>T</span>
+								</a>
+							</h3>
+						</section>
+					</div>
+					<div class="jelly-section">
+						<section class="container">
+							<h3>
+								<a href="./toby_6_5-8.html" target="_blank" class="animation-container">
+									<span>0</span>
+									<span>6</span>
+									<span>&nbsp;</span>
+									<span>A</span>
+									<span>O</span>
+									<span>P</span>
+								</a>
+							</h3>
+						</section>
+					</div>
+					<div class="jelly-section">
+						<section class="container">
+							<h3>
+								<a href="./toby_9_3.html" target="_blank" class="animation-container">
+									<span>0</span>
+									<span>9</span>
+									<span>&nbsp;</span>
+									<span>P</span>
+									<span>R</span>
+									<span>O</span>
+									<span>J</span>
+									<span>E</span>
+									<span>C</span>
+									<span>T</span>
+								</a>
+							</h3>
+						</section>
+					</div>
+					<div class="jelly-section"></div>
+					<div class="jelly-section"></div>
+					<div class="jelly-section"></div>
+					<div class="jelly-section"></div>
+				</div>
+			</div>
 		</div>
-	</section>
+	</div>
+
 </body>
 
 </html>

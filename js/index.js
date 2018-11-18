@@ -1,6 +1,6 @@
 
 paper.install(window);          
-paper.setup('myCanvas1'); 
+paper.setup('jellyCanvas'); 
 
 var SSection, Sections, gui, h, mwheel, onFrame, windowHeight, _base, _ref;
 
@@ -27,7 +27,7 @@ h = {
 };
 
 window.PaperSections = {
-  $container: $('#wrapper'),
+  $container: $('#jelly-wrap'),
   i: 0,
   next: 0,
   prev: 0,
@@ -365,7 +365,7 @@ Sections = (function() {
 })();
 
 $(window).on('menu:ready', function(){
-   window.PaperSections.$container.find('.menu-l').addClass('is-loaded')
+   window.PaperSections.$container.find('.menu-box').addClass('is-loaded')
 }); 
 
 window.PaperSections.sections = new Sections;
@@ -377,7 +377,7 @@ view.onFrame = function(e) {
 mwheel = function(e, d) {
   var $$, $content;
 
-  $content = $('#js-content');
+  $content = $('#jelly-content');
   $$ = $(this);
   if ($$.scrollTop() === 0 && d > 0) {
     e.stopPropagation();
@@ -416,11 +416,11 @@ gui = new dat.GUI;
 
 gui.add(window.PaperSections, 'invertScroll');
 
-window.PaperSections.$container.on('mouseenter', '.section-b', function() {
+window.PaperSections.$container.on('mouseenter', '.jelly-section', function() {
   return window.PaperSections.currSection = $(this).index();
 });
 
-window.PaperSections.$container.on('click', '.section-b', function() {
+window.PaperSections.$container.on('click', '.jelly-section', function() {
   var $$;
 
   $$ = $(this);

@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>06장 AOP</title>
+	<meta name="description" content="`TOBY BOOK` Presentation">
+	<meta name="author" content="Yeongmin Kim">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/ngle.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="css/custom.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+	<div class="logo"><img src="./img/logo_dark.png" alt=""></div>
+	<div class="reveal">
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<h1>6장 AOP</h1>
+				<p>
+					<small>Created by <a href="https://github.com/oinochoe/" target="_blank">Yeongmin Kim</a></small>
+				</p>
+			</section>
+			<section data-transition="convex">
+				<h2>목차</h2>
+				<p>6.5 스프링 AOP</p>
+				<p>6.6 트랜잭션 속성</p>
+				<p>6.7 애노테이션 트랜잭션 속성과 포인트컷</p>
+				<p>6.8 트랜잭션 지원 테스트</p>
+			</section>
+
+			<!-- <section>
+				<section data-transition="concave">
+					 <iframe src="http://tpcg.io/77g1Z3" frameborder="0"></iframe>
+				</section>
+			</section> -->
+			<section>
+				<section>
+					<h4>6.5 스프링 AOP</h4>
+					<p>분리해낸 트랜잭션 코드는 투명한 부가기능 형태로 제공돼야 한다. <br> 투명하다는 건 부가기능을 적용한 후에도 <span class="aquas">기존 설계와 코드에는 영향을 주지 않는다는 뜻</span>이다.</p>
+				</section>
+				<section>
+					<h4>6.5.1 자동 프록시 생성</h4>
+					<p>프록시 팩토리 빈 방식의 접근 한계 중 하나인 부가기능이 타깃 오브젝트마다 새로 만들어지는 문제는 스프링 ProxyFactoryBean의 <span class="aquas">어드바이스</span>를
+						통해 해결됐다.</p>
+					<p>이제 비슷한 ProxyFactoryBean 빈 설정정보를 추가해주는 부분이 남았다.</p>
+				</section>
+				<section>
+					<h4>빈 후처리기를 이용한 자동 프록시 생성기</h4>
+					<p><span class="aquas">DefaultAdvisorAutoProxyCreator</span>는 어드바이저를 이용한 자동 프록시 생성기</p>
+					<p>이를 잘 이용하면 스프링이 생성하는 빈 오브젝트의 일부를 프록시로 포장하고, 프록시를 빈으로 대신 등록할 수도 있다.</p>
+				</section>
+				<section>
+					<div><img src="./img/6-20.jpg" alt=""></div>
+					<p>빈으로 등록된 모든 어드바이저 내의 포인트 컷을 이용해 전달받은 빈이 프록시 적용대상인지를 확인, 그때는 내장된 프록시 생성기에 현재 빈에 대한 프록시를 만들게 하고, 만들어진 프록시에 어드바이저를
+						연결해준다.</p>
+				</section>
+				<section>
+					<h4>확장된 포인트컷</h4>
+					<ol>
+						<li>타깃 오브젝트의 메소드 중에서 어떤 메소드 부가기능을 적용할지를 선정해준다.</li>
+						<li>포인트컷이 등록된 빈 중에서 어떤 빈 오브젝트 적용할지를 선택하는 기능도 있다.</li>
+					</ol>
+					<p>위 두가지 모두 충족되는 타깃의 메소드에 어드바이스가 적용된다.</p>
+					<div><img src="./img/6-49.jpg" alt=""></div>
+					<small>[리스트 6-49] 두 가지 기능을 정의한 Pointcut 인터페이스</small>
+				</section>
+				<section>
+					<div style="width:80%"><img src="./img/6-50.jpg" alt=""></div>
+					<small>[리스트 6-50] 확장 포인트컷 테스트</small>
+				</section>
+				<section>
+					<div style="width:80%"><img src="./img/6-50-1.jpg" alt=""></div>
+					<small>[리스트 6-50] 확장 포인트컷 테스트</small>
+				</section>
+				<section>
+					<p>HelloWorld라는 클래스는 클래스 필터에서 이미 탈락해버리기 때문에 메소드 이름과 무관하게 모든 메소드가 어드바이스 적용 대상에서 제외된다.</p>
+				</section>
+			</section>
+			<section data-transition="concave">
+				<section>
+					<h4>6.5.2 DefaultAdvisorAutoProxyCreator의 적용</h4>
+					<div style="width:80%"><img src="./img/6-51.jpg" alt=""></div>
+					<small>[리스트 6-51] 클래스 필터가 포함된 포인트컷</small>
+				</section>
+				<section>
+					<div><img src="./img/6-52.jpg" alt=""></div>
+					<small>[리스트 6-52] 포인트컷 빈</small>
+				</section>
+				<section>
+					<h4>ProxyFactoryBean 제거와 서비스 빈의 원상복구</h4>
+					<div><img src="./img/6-53.jpg" alt=""></div>
+					<small>프록시를 적용하기 전의 단순한 형태로 돌아왔다.</small>
+				</section>
+				<section>
+					<div><img src="./img/6-54.jpg" alt=""></div>
+					<small>[리스트 6-54] 수정한 테스트용 UserService 구현 클래스</small>
+				</section>
+				<section>
+					<p>특정 테스트 클래스에서만 사용되는 클래스는 스태틱 멤버 클래스로 정의하는 것이 편리하다.</p>
+					<p>parent로 설정해두면 빈의 모든 설정을 가져와서 그대로 사용하겠다는 뜻이다.</p>
+					<div><img src="./img/6-55.jpg" alt=""></div>
+					<small>[리스트 6-55] 테스트용 UserService의 등록</small>
+
+				</section>
+				<section>
+					<div><img src="./img/6-56-1.jpg" alt=""></div>
+					<small>[리스트 6-56] testUserService 빈을 사용하도록 수정된 테스트</small>
+				</section>
+				<section>
+					<div style="width:60%"><img src="./img/6-56.jpg" alt=""></div>
+					<small>[리스트 6-56] testUserService 빈을 사용하도록 수정된 테스트</small>
+				</section>
+				<section>
+					<div><img src="./img/6-57.jpg" alt=""></div>
+					<small>[리스트 6-57] 클래스 필터용 이름을 변경한 포인트컷 설정</small>
+				</section>
+				<section>
+					<div style="width:60%"><img src="./img/6-57-1.jpg" alt=""></div>
+					<small>트랜잭션 테스트인 upagradeAllOrNothing()만 실패해야 한다.</small>
+					<small>실패의 원인은 트랜잭션이 적용되지 않아 예외가 발생하기 전에 수정한 내용이 롤백되지 않은 것이어야 한다.</small>
+				</section>
+			</section>
+			<section data-transition="concave">
+				<section>
+					<h4>6.5.3 포인트컷 표현식을 이용한 포인트컷</h4>
+					<p><span class="aquas">포인트컷 표현식</span>은 자바의 RegEx클래스가 지원하는 정규식처럼 간단한 문자열로 복잡한 선정조건을 쉽게 만들어낼 수 있는 강력한 표현식을 지원한다.</p>
+					<p>스프링이 사용하는 포인트컷 표현식은 <span class="aquas">AspectJ</span>라는 유명한 프레임워크에서 제공하는 것을 가져와 일부 문법을 확장해서 사용하는 것이다. 그래서 이를
+						<span class="aquas">AspectJ 포인트컷 표현식</span>이라고도 한다.</p>
+				</section>
+
+				<section>
+					<h4>포인트컷 표현식 문법</h4>
+					<div><img src="./img/pointcut.jpg" alt=""></div>
+					<small>AspectJ 포인트컷 표현식</small>
+					<div><img src="./img/pointcut2.jpg" alt=""></div>
+					<small>리플렉션의 Method 오브젝트가 제공하는 Target.minus() 메소드의 풀 시그니처</small>
+				</section>
+				<section>
+					<div><img src="./img/6-61.jpg" alt=""></div>
+					<small>[리스트 6-61] 메소드 시그니처를 이용한 포인트컷 표현식 테스트</small>
+				</section>
+				<section>
+					<div><img src="./img/6-62.jpg" alt=""></div>
+					<small>[리스트 6-62] 포인트컷과 메소드를 비교해주는 테스트 헬프 메소드</small>
+				</section>
+				<section>
+					<div><img src="./img/6-64.jpg" alt=""></div>
+					<small>[리스트 6-64] 포인트컷 표현식 테스트</small>
+				</section>
+				<section>
+					<div style="width:55%"><img src="./img/aspectj.jpg" alt=""></div>
+				</section>
+				<section>
+					<div><img src="./img/6-65.jpg" alt=""></div>
+					<small>[리스트 6-65] 포인트컷 표현식을 사용한 빈 설정</small>
+					<small>표현식을 사용하면 코드를 줄일 수는 있지만 실수의 가능성이 높아지기 때문에 <br> 충분히 학습하고 다양한 테스트를 미리 만들어서 검증한 표현식을 가져다 사용하자.</small>
+				</section>
+			</section>
+
+			<section data-transition="concave">
+				<section>
+					<h4>6.5.4 AOP란 무엇인가?</h4>
+					<div><img src="./img/aos.jpg" alt=""></div>
+					<small>만약 Transaction 기술의 적용에만 주목하고 싶다면 TransactionAdvice에만 집중하면 된다.</small>
+					<small>그리고 그 대상을 결정해주는 transactionPointcut 빈의 설정만 신경써주면 된다.</small>
+					<small>이렇게 애플리케이션을 특정한 관점을 기준으로 바라볼 수 있게 해준다는 의미에서 <br> AOP를 관점 지향 프로그래밍이라고도 한다.</small>
+				</section>
+				<section>
+					<h4>6.5.4 AOP란 무엇인가?</h4>
+					<div><img src="./img/6-67.jpg" alt=""></div>
+				</section>
+
+				<section>
+					<h4>어드바이저 내장 포인트컷</h4>
+					<div><img src="./img/6-68.jpg" alt=""></div>
+					<small>여러개의 포인트컷을 어드바이저에서 공유하려고 하면 독립적인 <code class="aquas">&lt;aop:pointcut></code> 태그로 등록해야 한다.</aop:pointcut></small>
+				</section>
+			</section>
+			<section data-transition="concave">
+				<section>
+					<h4>6.6 트랜잭션 속성</h4>
+					<p>더이상 쪼갤 수 없는 최소 단위의 작업. <br> 따라서 트랜잭션 경계 안에서 진행된 작업은 commit()을 통해 모두 성공하든지 아니면 rollback()을 통해 모두 취소돼야 한다.</p>
+				</section>
+				<section>
+					<h4>트랜잭션 네가지 속성</h4>
+					<ul>
+						<li>트랜잭션 전파</li>
+						<img src="./img/transaction_01.jpg" alt="">
+						<ul>
+							<li>PROPAGATION_REQUIRED : 가장 많이 사용됨. 진행 중 트랜잭션 있으면 이에 참여</li>
+							<li>PROPAGATION_REQUIRES_NEW : 항상 새로운 트랜잭션</li>
+							<li>PROPAGATION_NOT_SUPPORTED : 트랜잭션 없이 동작하도록 만듦</li>
+							<li>그 외</li>
+						</ul>
+					</ul>
+				</section>
+				<section>
+					<h4>트랜잭션 네가지 속성</h4>
+					<ul>
+						<li>격리수준</li>
+						<p>모든 DB트랜잭션은 <span class="aquas">격리수준</span> 갖고 있어야 한다.</p>
+						<li>제한시간</li>
+						<p>DefaultTransactionDefinition의 기본설정은 제한시간이 없는 것</p>
+						<li>읽기전용</li>
+						<p>트랜잭션 내에서 데이터를 조작하는 시도를 막아줄 수 있다. 데이터 엑세스 기술에 따라 성능향상도 된다.</p>
+					</ul>
+				</section>
+			</section>
+			<section data-transition="concave">
+				<section>
+					<h4>6.6.2 트랜잭션 인터셉터와 트랜잭션 속성</h4>
+					<div><img src="./img/pointcut.jpg" alt=""></div>
+					<small>[리스트 6-70] 트랜잭션 경계설정 코드의 동작방식 변경 포인트</small>
+				</section>
+				<section>
+					<div><img src="./img/transaction_attr.jpg" alt=""></div>
+					<small>트랜잭션 전파 항목만 필수이고 나머지는 다 생략 가능하다.</small>
+				</section>
+				<section>
+					<div><img src="./img/transaction_tx.jpg" alt=""></div>
+					<small>bean 태그로 등록하는 경우에 비해 장점이 많으므로 tx스키마 태그를 사용해 어드바이스 등록 권장</small>
+				</section>
+				<section>
+					<div><img src="./img/표현식.jpg" alt=""></div>
+					<small>[리스트 6-78] 이름을 사용한 표현식을 갖는 포인트컷과 어드바이저</small>
+					<small>이제 아이디가 Service로 끝나는 모든 빈에 transactionAdvice 빈의 부가기능이 적용된다</small>
+				</section>
+			</section>
+			<section data-transition="concave">
+				<section>
+					<h4>6.7 애노테이션 트랜잭션 속성과 포인트컷</h4>
+					<div style="width:70%"><img src="./img/transactinal.jpg" alt=""></div>
+				</section>
+				<section>
+					<div><img src="./img/transaction_02.jpg" alt=""></div>
+					<small>@Transactional을 붙이지 않은 여타 메소드는 클래스 레벨에 부여된 공통 @Transactional을 따르게 된다.</small>
+				</section>
+			</section>
+			<section data-transition="concave">
+				<section>
+					<h4>6.8 트랜잭션 지원 테스트</h4>
+					<div><img src="./img/6-25.jpg" alt=""></div>
+				</section>
+				<section>
+					<p>AOP를 이용해 코드 외부에서 트랜잭션의 기능을 부여해주고 속성을 지정할 수 있게 하는 방법을 <span class="aquas">선언적 트랜잭션</span>이라고 한다.</p>
+					<p>TransactionTemplate이나 개별 데이터 기술의 트랜잭션 API를 직접 코드 안에서 사용하는 방법은 <span class="aquas">프로그램 의한 트랜잭션</span> 이라고 한다.</p>
+				</section>
+				<section>
+						<div><img src="./img/6-92.jpg" alt=""></div>
+				</section>
+				
+				<section>
+						<div><img src="./img/6-95.jpg" alt=""></div>
+				</section>
+				
+				<section>
+						<p>롤백 테스트는 DB 작업이 포함된 테스트가 수행되도 DB에 영향을 주지 않기 때문에 장점이 많다.</p>
+				</section>
+				
+				<section>
+						<div><img src="./img/6-99.jpg" alt=""></div>
+						<small>[리스트 6-99] 테스트 트랜잭션을 커밋시키도록 설정한 테스트</small>
+						<small>예외가 발생하지 않는 한 트랜잭션은 커밋된다.</small>
+				</section>
+				
+				<section>
+						<div><img src="./img/6-97.jpg" alt=""></div>
+						<small>[리스트 6-97] 테스트에 적용된 @Transactional</small>
+						<div><img src="./img/6-97-1.jpg" alt=""></div>
+						<small>[리스트 6-98] 트랜잭션 적용 확인</small>
+						<small>@Transactional에 의해 시작된 트랜잭션에 참여하므로 읽기전용 속성 위반으로 예외 발생</small>
+				</section>
+			</section>
+			<section data-transition="concave">
+				<section>
+					<h4>정리</h4>
+					<p>트랜잭션 경계설정 기능을 성격이 다른 비즈니스 로직 클래스에서 분리하고 유연하게 적용할 수 있는 방법을 찾아보면서 애플리케이션에 산재해서 나타나는 부가기능을 모듈화 할 수 있는 AOP기술을 알아봤다.</p>
+				</section>
+			</section>
+			<section data-transition="concave">
+				<section>
+					<ul>
+						<li>트랜잭션 경계설정 코드를 분리해서 별도의 클래스로 만들고 비즈니스 로직 클래스와 동일한 인터페이스를 구현하면 DI의 확장 기능을 이용해 클라이언트의 변경 없이도 깔끔하게 분리된 트랜잭션 부가기능을
+							만들 수 있다.</li>
+
+						<li>트랜잭션처럼 환경과 외부 리소스에 영향을 받는 코드를 분리하면 비즈니스 로직에만 충실한 테스트를 만들 수 있다.</li>
+
+						<li>목 오브젝트를 활용하면 의존관계 속에 있는 오브젝트도 손쉽게 고립된 테스트로 만들 수 있다.</li>
+
+						<li>DI를 이용한 트랜잭션의 분리는 데코레이터 패턴과 프록시 패턴으로 이해될 수 있다.</li>
+
+						<li>번거로운 프록시 클래스 작성은 JDK의 다이내믹 프록시를 사용하면 간단하게 만들 수 있다.</li>
+
+						<li>다이내믹 프록시는 스태틱 팩토리 메소드를 사용하기 때문에 빈으로 등록하기 번거롭다. 따라서 팩토리 빈으로 만들어야 한다. 스프링은 자동 프록시 생성 기술에 대한 추상화 서비스를 제공하는 프록시
+							팩토리 빈을 제공한다.</li>
+					</ul>
+				</section>
+			</section>
+			<section data-transition="concave">
+				<section>
+					<ul>
+
+
+						<li>프록시 팩토리의 빈의 설정이 반복되는 문제를 해결하기 위해 자동 프록시 생성기와 포인트컷을 활용할 수 있다. 자동 프록시 생성기는 부가기능이 담긴 어드바이스를 제공하는 프록시를 스프링 컨테이너
+							초기화 시점에 자동으로 만들어준다.</li>
+
+						<li>포인트컷은 AspectJ 포인트컷 표현식을 사용해서 작성하면 편리하다.</li>
+
+						<li>AOP는 OOP만으로는 모듈화되기 힘든 부가기능을 효과적으로 모듈화하도록 도와주는 기술이다.</li>
+
+						<li>스프링은 자주 사용되는 AOP 설정과 트랜잭션 속성을 지정하는 데 사용할 수 있는 전용 태그를 제공한다.</li>
+
+						<li>AOP를 이용해 트랜잭션 속성을 지정하는 방법에는 포인트컷 표현식과 메소드 이름 패턴을 이용하는 방법과 타깃에 직접 부여하는 @Transactional 애노테이션을 사용하는 방법이 있다.</li>
+
+						<li>@Transactional을 이용한 트랜잭션 속성을 테스트에 적용하면 손쉽게 DB를 사용하는 코드의 테스트를 만들 수 있다.</li>
+					</ul>
+
+				</section>
+			</section>
+			<section class="no-logo" data-background="http://i.giphy.com/90F8aUepslB84.gif" data-transition="concave">
+				<h1>끝!?</h1>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+			//Add options to print PDF
+			pdfSeparateFragments: false,
+			pdf: true,
+			slideNumber: 'c/t',
+			pdfMaxPagesPerSlide: 1,
+			// Parallax background image
+			//parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg', // e.g. "https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg"
+
+			// Parallax background size
+			//parallaxBackgroundSize: '2100px 900px', // CSS syntax, e.g. "2100px 900px" - currently only pixels are supported (don't use % or auto)
+
+			// Number of pixels to move the parallax background per slide
+			// - Calculated automatically unless specified
+			// - Set to 0 to disable movement along an axis
+			parallaxBackgroundHorizontal: 200,
+			parallaxBackgroundVertical: 50,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+			// Shows the slide number using default formatting
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [{
+					src: 'lib/js/classList.js',
+					condition: function () {
+						return !document.body.classList;
+					}
+				},
+				{
+					src: 'plugin/markdown/marked.js',
+					condition: function () {
+						return !!document.querySelector('[data-markdown]');
+					}
+				},
+				{
+					src: 'plugin/markdown/markdown.js',
+					condition: function () {
+						return !!document.querySelector('[data-markdown]');
+					}
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true,
+					callback: function () {
+						hljs.initHighlightingOnLoad();
+					}
+				},
+				{
+					src: 'plugin/search/search.js',
+					async: true
+				},
+				{
+					src: 'plugin/zoom-js/zoom.js',
+					async: true
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				}
+			]
+		});
+		Reveal.addEventListener('ready', function (event) {
+			if (event.currentSlide.classList == 'no-logo present') {
+				document.body.classList.add('off');
+			} else {
+				document.body.classList.remove('off');
+			}
+		});
+		Reveal.addEventListener('slidechanged', function (event) {
+			if (event.currentSlide.classList == 'no-logo present') {
+				document.body.classList.add('off');
+			} else {
+				document.body.classList.remove('off');
+			}
+		});
+	</script>
+
+</body>
+
+</html>

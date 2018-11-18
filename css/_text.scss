@@ -17,32 +17,48 @@
   stroke-linejoin: round;
   stroke-dasharray: 90,310;
   stroke-dashoffset: 0;
-  -webkit-animation: text 8s infinite linear;
-  animation: text 8s infinite linear;
+  -webkit-animation: text 15s infinite linear;
+  animation: text 15s infinite linear;
 }
 
 .animation-container svg .text:nth-child(4n + 1) {
-  stroke: #444;
+  stroke: #fff;
   -webkit-animation-delay: -2s;
   animation-delay: -2s;
 }
 
 .animation-container svg .text:nth-child(4n + 2) {
-  stroke: #444;
+  stroke: #fff;
   -webkit-animation-delay: -4s;
   animation-delay: -4s;
 }
 
 .animation-container svg .text:nth-child(4n + 3) {
-  stroke: #444;
+  stroke: #fff;
   -webkit-animation-delay: -6s;
   animation-delay: -6s;
 }
 
 .animation-container svg .text:nth-child(4n + 4) {
-  stroke: #444;
+  stroke: #fff;
   -webkit-animation-delay: -8s;
   animation-delay: -8s;
+}
+
+.animation-container.black svg .text:nth-child(4n + 1) {
+  stroke: #333;
+}
+
+.animation-container.black svg .text:nth-child(4n + 2) {
+  stroke: #333;
+}
+
+.animation-container.black svg .text:nth-child(4n + 3) {
+  stroke: #333;
+}
+
+.animation-container.black svg .text:nth-child(4n + 4) {
+  stroke: #333;
 }
 
 @-webkit-keyframes text {
