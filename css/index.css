@@ -122,7 +122,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 h3 { display: block; text-align: center; font-size: 20px; /* font-family: 'Open Sans'; */ font-family: 'Titan One', cursive; }
 h3 a { display: block; text-decoration: none; }
 h3 span { position: relative; top: 20px; display: inline-block; animation: bounce .8s ease infinite alternate; font-family: 'Titan One', cursive; font-size: 80px; color: #FFF; text-shadow: 0 1px 0 #CCC, 0 2px 0 #CCC, 0 3px 0 #CCC, 0 4px 0 #CCC, 0 5px 0 #CCC, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px rgba(0, 0, 0, 0.4); }
-@media screen and (max-width: 640px) { h3 { font-size: 40px; } }
+@media screen and (max-width: 640px) { h3 span { font-size: 35px; } }
 h3 span:nth-child(2) { animation-delay: .1s; }
 h3 span:nth-child(3) { animation-delay: .2s; }
 h3 span:nth-child(4) { animation-delay: .3s; }
@@ -147,6 +147,7 @@ h3 span:nth-child(8) { animation-delay: .7s; }
 #jelly-wrap .jelly-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; font-size: 25px; line-height: 30px; -webkit-transform: rotate3d(0, 0, 0); -moz-transform: rotate3d(0, 0, 0); -ms-transform: rotate3d(0, 0, 0); -o-transform: rotate3d(0, 0, 0); transform: rotate3d(0, 0, 0); }
 
 .jelly-section { height: 200px; position: relative; cursor: pointer; }
+@media screen and (max-width: 640px) { .jelly-section { height: 140px; } }
 
 .jelly-section:active:after { width: 76px; height: 76px; margin-top: -38px; margin-left: -38px; background-size: 100% 100%; -webkit-transition: all 0.15s ease-out; -moz-transition: all 0.15s ease-out; -o-transition: all 0.15s ease-out; transition: all 0.15s ease-out; }
 

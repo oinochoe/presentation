@@ -59,6 +59,9 @@
     height: 200px;
     position: relative;
     cursor: pointer;
+    @media screen and (max-width:640px) {
+      height:140px
+    }
   }
   .jelly-section:active:after {
     width: 76px;
