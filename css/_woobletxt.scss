@@ -24,6 +24,9 @@ h3 {
             0 9px 0 transparent,
             0 10px 10px rgba(0, 0, 0, .4);
     }
+    @media screen and (max-width:640px) {
+        font-size:40px;
+    }
 
     span:nth-child(2) {
         animation-delay: .1s;
