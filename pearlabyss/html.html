@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>19-12-09 HTML5로 검색 최적화 된 HTML 만들기</title>
+	<title>19-12-09 HTML5로 검색 최적화 된 웹사이트 만들기</title>
 	<meta name="description" content="HTML5 만들기">
 	<meta name="author" content="Yeongmin Kim">
 
@@ -38,29 +38,23 @@
 		<!-- Any section element inside of this container is displayed as a slide -->
 		<div class="slides">
 			<section data-transition="convex">
-				<h1 class="long-text">HTML5로 검색 최적화 된 HTML 만들기</h1>
+				<h1 class="long-text">HTML5로 검색 최적화 된 웹사이트 만들기</h1>
 				<p>
 					<small>Created by <a href="https://github.com/oinochoe/" target="_blank">Yeongmin Kim(19-12-09)</a></small>
 				</p>
 			</section>
 			<section data-transition="convex">
 				<h2>목차</h2>
-				<h3>9.3 애플리케이션 아키텍처</h3>
+				<ol>
+					<li>프론트 엔드 개발에 필요한 기술들</li>
+				</ol>
 			</section>
-			<section data-transition="zoom">
+			<section>
 				<section data-transition="convex">
-					<h4>9.3 애플리케이션 아키텍처</h4>
-					<p>시스템 레벨의 아키텍처가 대략 구성된 이후 <span class="aquas">스프링 웹 애플리케이션</span>의 아키텍처를 결정해보자.</p>
-					<p><span class="aquas">아키텍처</span>란 단순히 정적인 구조를 나타내는 것이 아니라 그 구조에서 일어나는 <span class="aquas">동적인 행위</span>와 깊은 관계가
-						있다.</p>
+					<h4>1. 프론트 엔드 개발에 필요한 기술들</h4>
 				</section>
 				<section data-transition="convex">
-					<h4>9.3.1 계층형 아키텍처</h4>
-					<p>
-						책임과 성격이 다른 것을 크게 그룹으로 만들어 분리해두는 것을 아키텍처 차원에서는 <span class="aquas">계층형 아키텍처</span>라고 부른다.
-						또는 <span class="aquas">멀티 티어 아키텍처</span>, 일반적으로 세개의 계층을 갖는다고 해서 <span class="aquas">3계층(3-tier or 3-layer)</span>라고도
-						한다.
-					</p>
+				  <img src="../img/pearl/frontend.png" alt="프론트 엔드 개발이 필요한 기술들">
 				</section>
 				<section data-transition="convex">
 					<h4>3계층 아키텍처와 수직 계층</h4>
@@ -228,14 +222,9 @@
 			</section>
 			<section data-transition="zoom">
 				<section data-transition="convex">
-					<h4>도메인 계층 방식</h4>
-					<p>도메인 모델을 따르는 오브젝트를 만들고 이를 활용하는 방법에는 한계가 있다.</p>
-					<p><span class="aquas">도메인 계층방식</span>은 도메인 오브젝트들이 하나의 독립적인 계층을 이뤄서 서비스 계층과 데이터 엑세스 계층의 사이에 존재하게 하는 것이다.</p>
+					<h4>참고자료</h4>
 					<ol>
-						<li>도메인 종속적인 비즈니스 로직 처리는 도메인 계층의 오브젝트 안에서 이루어 진다.(dao impl)</li>
-						<li>도메인 오브젝트가 기존 데이터 엑세스 계층이나 기반 계층의 기능을 직접 활용할 수 있다는 것. <br> 
-							AspectJ AOP를 사용하면 클래스의 생성자가 호출되면서 오브젝트가 만들어지는 시점을 조인 포인트로 사용할 수 있고
-						    스프링 빈이 아닌 일반 오브젝트에도 AOP 부가기능을 적용할 수 있다. </li>
+						<li>프론트 엔드 개발자 학습 방향 (https://poiemaweb.com/Front-end)</li>
 						
 					</ol>
 				</section>
@@ -309,6 +298,7 @@
 			} else {
 				document.body.classList.remove('off');
 			}
+			document.querySelector('.logo').classList.remove('on');
 		});
 		Reveal.addEventListener('slidechanged', function (event) {
 			if (event.currentSlide.classList == 'no-logo present') {
@@ -316,6 +306,14 @@
 			} else {
 				document.body.classList.remove('off');
 			}
+		});
+
+		Reveal.addEventListener('paused', function (event) {
+			document.querySelector('.logo').classList.add('on');
+		});
+
+		Reveal.addEventListener('resumed', function(event){
+			document.querySelector('.logo').classList.remove('on');
 		});
 	</script>
 
