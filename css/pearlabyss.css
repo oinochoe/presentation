@@ -23,6 +23,7 @@ body {
 
 .reveal a {
   color: #fff;
+  text-decoration: underline;
 }
 
 .reveal a:hover {
@@ -34,8 +35,13 @@ body {
   padding-top: 0;
 }
 
-.reveal .slides {
-  overflow: hidden;
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 /**
@@ -100,9 +106,15 @@ img {
   display: block;
   max-height: 100%;
   max-width: 100%;
-  margin: 0 auto;
+  margin-left: 0;
   -webkit-transform: scale(0.83);
   transform: scale(0.83);
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+}
+
+.reveal small * {
+  vertical-align: bottom;
 }
 
 /* controls */

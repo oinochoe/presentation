@@ -47,6 +47,9 @@
 				<h2>목차</h2>
 				<ol>
 					<li>프론트 엔드 개발에 필요한 기술들</li>
+					<li>HTML5의 기본 특징들</li>
+					<li>HTML5.2에서의 변화</li>
+					<li>검색 엔진 최적화(SEO)</li>
 				</ol>
 			</section>
 			<section>
@@ -57,167 +60,316 @@
 				  <img src="../img/pearl/frontend.png" alt="프론트 엔드 개발이 필요한 기술들">
 				</section>
 				<section data-transition="convex">
-					<h4>3계층 아키텍처와 수직 계층</h4>
+					<h4>2. HTML5의 기본 특징들</h4>
 					<ul>
-						<li>프레젠테이션 계층 : UI를 만들어내고 그 흐름을 관리</li>
-						<li>서비스 계층 : 비즈니스 로직을 담고 있다.</li>
-						<li>데이터 엑세스 계층 : DB나 레거시 시스템과 연동하는 인터페이스 역할</li>
+						<li>HTML4에서 HTML5로 2014년 10월 28일 확정 되었으며 기존 텍스트와 하이퍼링크만 표시하던 것과 달리 멀티미디어 등 다양한 애플리케이션까지 표현, 제공하도록 진화하였습니다.</li>
+						<li><span class="aquas">Contents Model</span>이라는 개념이 추가되어 문서의 Outline을 잡고 Contents를 구성할 수 있게 되었습니다.</li>
+						<li>다양한 기능들이 추가되었기 때문에 호환성 이슈가 있습니다.<a href="http://html5test.com/index.html" target="_blank">http://html5test.com/index.html</a></li>
+						<li>마크업 검사를 통해서 outline을 확인하고 더 좋은 마크업을 적용하기 위해 노력할 수 있습니다. <a href="http://validator.w3.org/" target="_blank">w3c validation</a></li>
+						<li>image 태그의 alt 속성에 관련된 설명은 후에 SEO 관련 내용에서 다시 설명하도록 하겠습니다.</li>
 					</ul>
-					<div><img src="../img/9-13.jpg" alt=""></div>
 				</section>
 				<section data-transition="convex">
-					<h4>데이터 엑세스 계층</h4>
-					<p>DAO 계층이라고도 불린다.</p>
-					<p>DB 외에도 ERP, 레거시 시스템, 메인 프레임 등에 접근하는 역할을 하기 때문에 EIS(Enterprise Information System)계층이라고도 한다. </p>
-					<div><img src="../img/9-14.jpg" alt=""></div>
+					<ul>
+						<li>HTML5 마크업시 Tag는 대소문자를 구분하지 않지만 가독성 측면이나 기존 개발 패턴에 준수하는 것이 좋기 때문에 소문자로 작성하는 것을 권장합니다.</li>
+						<li>HTML5에서 가장 크게 변화된 시멘틱 태그들을 살펴보면 다음과 같습니다.</li>
+					</ul>
+				  <img src="../img/pearl/semantic.png" alt="">
 				</section>
 				<section data-transition="convex">
-					<p>추상화 계층 구조를 따른다면 항상 <span class="aquas">JdbcTemplate</span>을 통해 접근하도록 코드를 작성하는 것이 바람직하다.</p>
-					<p>JdbcTemplate의 기능과 7장에서 만들었던 SqlService의 SQL 가져오는 기능을 묶어 새로운 추상 계층을 도입 할 수 있다.</p>
-					<div><img src="../img/9-15.jpg" alt=""></div>
+					<ul>
+						<li>검색엔진이 잘 검색할 수 있도록 의미론적으로 웹을 구성하는 것이 중요해졌습니다.</li>
+						<li>의미론적인 웹 태그를 사용하면 검색봇이 해당 사용자의 키워드에 따라 강조하고 싶은 정보가 검색되도록 도움을 줍니다.</li>
+						<li>
+								section, article, div의 차이는
+								<ol>
+									<li>내용이 독립적이고 스스로 설 수 있는 내용이라면 article</li>
+									<li>내용이 서로 관계가 있다면 section</li>
+									<li>의미적으로 관계가 없다면 div 사용</li>
+								</ol>
+						</li>
+					</ul>
+					<div class="flex">
+						<img src="../img/pearl/tag.png" alt="">
+						<img src="../img/pearl/article_section.png" alt="">
+					</div>
 				</section>
 				<section data-transition="convex">
-					<p>하지만 한번 새로운 계층과 API를 만들어 적용하면 이를 최대한 유지할 수 있도록 하위 계층의 변화에 대응해야 하는 <span class="aquas">책임</span>도 갖는다.</p>
-					<p>이런 부분이 부담스럽지만 경우에 따라 유연하게 하위 계층의 API를 활용할 필요가 있다면, 공통적인 기능을 분리해서 <span class="aquas">유틸리티나 헬퍼 메소드 또는 오브젝트</span>로
-						제공해주는 것도 좋은 방법이다.</p>
-				</section>
-			</section>
-			<section data-transition="zoom">
-				<section data-transition="convex">
-					<h4>서비스 계층</h4>
-					<p>서비스 계층은 DAO 계층을 호출하고 이를 활용해서 만들어진다.</p>
-					<p>웹 서비스와 같은 원격 호출을 통해 정보를 가져오거나 메일 또는 메시징 서비스를 이용하는 것이 대표적이다.</p>
+					<ul>
+						<li>반대로 순전히 보여지는 것에만 집중하던 태그들은 CSS로 처리가능하기 때문에 사라졌습니다.</li>
+						<li>basefont, big, center, font, striker, u 등...</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<div><img src="../img/9-16.jpg" alt=""></div>
-					<p>일반적으로는 서비스 계층이 필요에 따라 기반 서비스 계층의 API를 호출해서 이용한다. 하지만 반대로 서비스 계층의 코드를 기반 서비스 계층에서 실행시키는 경우가 있다.
-						<span class="aquas">스케줄링</span>이 대표적이다. 하지만 원칙적으로 서비스 계층 코드가 기반 서비스 계층의 구현에 종속되면 안 된다.
-					</p>
-				</section>
-			</section>
-			<section data-transition="zoom">
-				<section data-transition="convex">
-					<h4>프레젠테이션 계층</h4>
-					<p>대부분의 엔터프라이즈 애플리케이션을 사용하는 클라이언트들은 HTTP 프로토콜을 선호한다. <br>
-						따라서 이런 클라이언트와 연결돼서 동작하는 프레젠테이션 계층은 자바에서 HTTP 프로토콜을 처리하는 가장 기본 엔진인 <span class="aquas">서블릿 기술</span>을 바탕으로 한다.
-						<br> 최근에는 점점 많은 프레젠테이션 로직이 <span class="aquas">클라이언트</span>로 이동하고 있다. <span class="aquas">RIA</span>(Rich
-						Internet Application)과 <span class="aquas">SOFEA</span>(Service Oriented Front End Architecture)가 대표적인 예다.</p>
+					<ul>
+						<li>HTML Document에 사용되는 확장 사양들이 추가되었습니다.</li>
+						<li>getElementsByClassName(), innserHTML, classList(has(), remove(), add(), toggle())</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<div><img src="../img/ria.jpg" alt=""></div>
-					<p>RIA는 일반적으로 사용자 인터페이스에 필요한 처리를 웹 클라이언트로 전송하지만 응용 프로그램 서버에서 대량의 데이터를 유지 (즉, 프로그램, 데이터 등의 상태를 유지)합니다. </p>
-					<small>출처 : http://learnpact.com/web/ria-rich-internet-apps</small>
+					<p>HTML5 태그들의 사용 가이드는 다음과 같습니다.</p>
+					<ul>
+						<li>1. figure와 figcaption
+								<img src="../img/pearl/figcaption.png" alt="">
+						</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<div style="width:50%;"><img src="../img/sofea_img.jpg" alt=""></div>
-					<ol style="font-size:.45em !important;">
-						<li>응용 프로그램 다운로드, 데이터 교환 및 프레젠테이션 흐름을 분리해야 함 <br>
-							- 클라이언트의 어떤 부분도 서버 측에서 호출, 생성 또는 템플릿화 될 수 없습니다.</li>
-						<li>프레젠테이션 흐름은 클라이언트 측의 관심사입니다.</li>
-						<li>응용 프로그램 서버와의 모든 통신은 서비스 (REST, SOAP 등)를 사용해야합니다.</li>
-						<li>mvc 디자인 패턴은 서버가 아닌 클라이언트에 속합니다.</li>
-					</ol>
-					<small style="font-size:14px;">출처 :
-						https://www.slideshare.net/kunalashar/sofea-service-oriented-front-end-architecture-next-gen-web-architecture-for-the-cloud-era</small>
-				</section>
-			</section>
-			<section data-transition="zoom">
-				<section data-transition="convex">
-					<h4>계층형 아키텍처 설계의 원칙</h4>
-					<p>각 계층은 <span class="aquas">응집도</span>가 높으면서 다른 계층과는 <span class="aquas">낮은 결합도</span>를 유지할 수 있어야 한다.</p>
-					<div style="width:65%"><img src="../img/mistake.png" alt=""></div>
-					<small>[서비스 계층이 DAO를 호출할 때 인터페이스로 종종 실수하는 계층간 설계의 예]</small>
-					<small>결과를 JDBC의 ResultSet오브젝트로 돌려주면 이를 사용하는 서비스 계층의 코드는 ResultSet이라는 데이터 엑세스 계층에서 만들어진 오브젝트를 직접 다뤄야만 한다. <br>
-						즉, 예외처리 및 리소스 반환, DB커넥션 종료도 직접 해야 한다.</small>
+					<ul>
+						<li>2. HTML4부터 사용되어 온 label 사용법은 다음과 같습니다. <br/> <small class="aquas"> form의 양식에 이름을 붙이는 태그입니다.</small>
+							<small> label 태그사이에 위치한 text, checkbox, radio 등은 클릭 가능 영역이 텍스트로 확장됩니다.</small>
+							<small><code> &lt;label for=""> 와 <태그 id=""></code>값은 서로 그룹을 형성합니다.</small>
+							<small>label 태그는 여러가지 form 요소들을 도와주고 편의성을 증진하는데 사용됩니다.</small>
+							<small>간단히 label안에 input 요소를 작성시는 for를 생략할 수 있습니다.</small>
+							<div class="flex">
+								<img src="../img/pearl/label.png" alt="라벨에 관련된 사진" style="height:300px">
+								<ul>
+									<li><a href="https://codepen.io/oinochoe/pen/wvBKVBN" target="_blank">label과 input</a></li> 
+									<li><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/select" target="_blank">label과 select</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<div><img src="../img/correct.png" alt=""></div>
-					<p>사용자 정보를 담고 있는 단순한 User 오브젝트로 수정해서 특정 계층의 기술이나 구현에 종속되지 않게 바꿀 수 있다.</p>
-				</section>
-				<section data-transition="convex">
-					<p>또 하나의 실수는 프레젠테이션 계층의 오브젝트를 그대로 서비스 계층으로 전달하는 것. <br>
-						서블릿의 <span class="aquas">HttpServletRequest나 HttpServletResponse, HttpSession</span>
-						같은 타입을 서비스 계층 인터페이스 메소드의 파라미터 타입으로 사용하면 안된다.</p>
+					<ul>
+						<li>HTML5에 다양하게 추가된 태그들은 모두 각각의 역할과 의미에 따라서 적재적소에 배치되어야 합니다.</li>
+						<li>2017년 말에 발표된 HTML5.2에서 새롭게 변화된 기능들을 살펴보면서 조금 더 다양한 활용방법과 사용법을 익혀보겠습니다.</li>
+					</ul>
 				</section>
 			</section>
 			<section data-transition="zoom">
 				<section data-transition="convex">
-					<h4>9.3.2 애플리케이션 정보 아키텍처</h4>
-					<div><img src="../img/9-17.jpg" alt=""></div>
-					<small>이런 방식은 자바 코드를 단지 DB와 웹 화면을 연결해주는 단순한 인터페이스 도구로 전락시킨다. <br>로직을 DB보다는 애플리케이션으로
-						가져오는 편이 유리한 점이 많다. 비용도 저렴해질 뿐 아니라 안정성도 높아지고 코드를 검증하기도 매우 편하다.</small>
+					<h4>3. HTML5.2에서의 변화</h4>
 				</section>
 				<section data-transition="convex">
-					<div><img src="../img/9-18.jpg" alt=""></div>
-					<small>장점 : 자바 언어의 장점을 활용해 로직을 구현할 수 있고 테스트 하기도 수월</small>
-					<small>단점 : 서비스 계층의 비즈니스 로직의 필요에 따라 SQL이 만들어지므로 여전히 계층 간의 결합도가 크다. 비슷한 트랜잭션 단위라 중복도 많다.</small>
+					<ul>
+						<li>새로운 기능과 삭제된 기능 그리고 개선된 기능이 있습니다.</li>
+						<ul>
+							<li><a href="https://codepen.io/oinochoe/pen/rNaOXGj" target="_blank">dialog 태그</a></li>
+							<li>
+								rel 속성에는 기본값이 없습니다. 그리고 rel 속성이 생략되거나, 속성 값이 user-agent 에 인식되지 못하면 그 속성은 하이퍼링크나 대상 자원으로서 특별한 관련이 없다고 봅니다.
+								<small>link의 rel 속성은 링크된 문서와의 관계를 지정하는데 검색엔진이나 브라우저에게 정보를 주어 사용자의 요청에 더 정확한 대응이 가능하게 해줍니다.</small>
+								<img src="../img/pearl/link_rel.png" alt="링크 릴레이션에 관련된 내용">
+							</li>
+						</ul>
+					</ul>
 				</section>
+				<section data-transition="convex">
+					<ul>
+						<ul>
+							<li>
+								apple-touch-icon에 sizes 속성이 추가되었습니다.
+								<img src="../img/pearl/apple-touch-icon.png" alt="apple touch icon">
+							</li>
+						</ul>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<ul>
+						<ul>
+							<li>body 태그 내에서 style 태그 사용가능(가급적 head 요소에 작성(should) 해야 한다.)</li>
+							<li>main 태그는 여러개를 사용할 수 있지만 보이는 것(의미론적으로만)이 하나여야 한다.(style로 가리는 것은 w3c 마크업 validation에 오류로 선언됨)
+								<img src="../img/pearl/main.png" alt="main 태그">
+							</li>
+						</ul>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<ul>
+						<ul>
+							<li>div 요소를 dl 요소 내에 사용할 수 있다(조건적으로) <br/>
+									단일 dl 요소 내에 dt와 dd를 그룹핑한 div와 dt와 dd요소는 서로 형제 노드 관계로 존재할 수 없다. <br/>
+									또한, dl 내의 div는 dt와 dd 외 다른 요소가 들어 올 수 없다.
+									<img src="../img/pearl/dl.png" alt="dl태그">
+							</li>
+						</ul>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<ul>
+						<ul>
+							<li>dfn태그(학문적 개념이나 새로운 용어 및 전문어를 정의)의 li 태그 사용 가능
+									<img src="../img/pearl/dfn.png" alt="dfn태그">
+							</li>
+						</ul>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<ul>
+						<ul>
+							<li>fieldset에 사용되는 legend 태그에 heading요소(h1~h6) 사용 가능 (스타일 자유도 상승(기존에는 p만 가능))</li>
+							<li>주석 내에 연속된 하이픈 작성해도 됨 (nu HTML Checker에서 검사해보아도 경고 메시지로 변경)</li>
+						</ul>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<ul>
+						<ul>
+							<li>삭제된 기능으로는 keygen(폼(form)양식에서 한 쌍의 키(암호화된 비밀번호)를 제공), inputmode(곧 브라우저에서도 depreacted 된다고 함), menu, menuitem 태그 및 속성이 있습니다.</li>
+							<li>주석 내에 연속된 하이픈 작성해도 됨 (nu HTML Checker에서 검사해보아도 경고 메시지로 변경)</li>
+							<li>p 요소 하위의 Inline blocks, inline tables, floated, positioned block-level 요소 사용 불가</li>
+							<img src="../img/pearl/deprecated.png" alt="depreacted된 태그들">
+						</ul>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					  <img src="../img/pearl/goodtag.png" alt="좋은 태그">
+						<ul>
+							<ul>
+									<li>이러한 html5.2의 변화들이 가지는 목적성은 디자인의 자유도와 접근성 그리고 웹 표준에 따른 조금 더 의미론적인 검색엔진 최적화에 있습니다.</li>
+							</ul>
+						</ul>
+					</section>
 			</section>
 			<section data-transition="zoom">
 				<section data-transition="convex">
-					<h4>9.3.3 오브젝트 중심 아키텍처</h4>
-					<div><img src="../img/9-19.jpg" alt=""></div>
+					<h4>4. 검색 엔진 최적화(SEO)</h4>
 				</section>
 				<section data-transition="convex">
-					<div style="width:70%"><img src="../img/9-1.jpg" alt=""></div>
-					<p>이 두 개의 정보를 조합해서 가져오는 방법은 JOIN을 이용해 2차원 구조의 정보를 만드는 것</p>
+					<small>흔히 알려진 검색엔진 최적화는 구글과 네이버가 제공하는 검색엔진 최적화 가이드를 중심으로 정리할 수 있지만 직접적으로 어떻게 작동하는지는 <span class="aquas">영업비밀</span>입니다.</small> <br/><br/>
+					<small>title 태그와 설명(description) 메타 태그는 검색엔진이 페이지의 내용을 파악할 때 기본으로 사용하는 데이터들이며, title 태그는 해당 페이지의 제목을, 그리고 descripiton 메타 태그에서는 그 페이지에 대한 설명을 포함시키면 됩니다. <br/>
+						제목과 설명은 페이지를 잘 표현할 수 있도록  <span class="aquas">페이지마다 고유하게 작성</span>합니다. <br/> 길이에 특별한 제한은 없지만, 네이버의 경우 <span class="aquas">제목은 15자 이내, 설명은 45자 이내</span>를 권장하고 있습니다.</small>
 				</section>
 				<section data-transition="convex">
-					<div style="width:70%"><img src="../img/sql.png" alt=""></div>
-					<small>배열에 담으려면 인덱스별로 필드 이름을 일일이 기억해야 하기 때문에 불편하다. <br> 배열 대신 맵에 필드 이름과 값을 함께 담고 맵의 리스트를
-						만들어 돌려주는게 편리하다.
-					</small>
-					<div style="width:70%"><img src="../img/sql_dao.png" alt=""></div>
-					<small>[리스트 9-8] SQL 결과를 맵에 담는 DAO 코드</small>
-					<small>서비스 계층에 전달되는 것은 <span style="color:chartreuse">List&lt;Map&lt;String, Object&gt;&gt;</span>타입</small>
+					<ul>
+						<li>오픈그래프(Open Graph) 태그
+							<ul>
+								<li>오픈그래프 태그는 원래 페이스북(Facebook)에 공유될 때 사용되는 정보이지만, 최근에는 페이스북 뿐 아니라 여러 곳에서 활용되는 메타 데이터입니다. </li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<p>위 타입만 봐서는 안에 담긴 내용이 어떤 것인지 알 수 없다.</p>
-					<small>반면에 오브젝트 방식에서는 애플리케이션에서 사용되는 정보가 도메인 모델의
-						구조를 반영해서 만들어진 오브젝트 안에 담긴다. 도메인 모델은 애플리케이션 전 계층에
-						서 동일한 의미를 갖는다. 따라서 도메인 모텔이 반영된 도메인 오브젝트도 전 계층에
-						서 일관된 구조를 유지한 채로 시용될 수 있다.</small>
-					<div style="width:60%"><img src="../img/doamin.jpg" alt=""></div>
+					<ul>
+						<li>제목 태그의 적절한 사용
+							<ul>
+								<li>W3C Validator에서 확인할 수 있었듯이 제목 태그의 적절한 사용에 따른 Outline은 웹 페이지의 개요(Outline)을 설명하기에 충분합니다.한 페이지 내에 너무 많은 제목 태그들이 사용되는 것은 좋지 못합니다. </li>
+								<li>
+									HTML4에서는 섹셔닝 요소와 함께 이루어진 outline이 목차역할을 하지 않았지만 HTML5에서는 섹셔닝 요소와 함께 이루어진 heading 요소들이 목차 역할을 합니다.
+									<img src="../img/pearl/outliner.png" alt="outline 비교">
+									<a href="https://gsnedders.html5.org/outliner/">HTML5 Outliner</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<p>DB에서 SQL 결과로 가져온 값을 그대로 사용하는 경우와는 다르게, <span class="aquas">도메인 모델을 반영하는 오브젝트</span>를 사용하면 자바 언어의 특성을 최대한 활용할 수
-						있도록 정보를 가공할 수 있다.</p>
-					<p>Product 클래스에는 Product 테이블처럼 categoryid라는 외래키가 없는 대신 Category 오브젝트를 가리키는 레퍼런스 변수가 있다.</p>
-					<div style="width:80%"><img src="../img/category.png" alt=""></div>
-					<small>[Category에 속한 Product를 간단히 가져오는 방법]</small>
+					<ul>
+						<li>섹셔닝 요소들
+							<ul>
+								<li>섹셔닝 요소들로는 <span class="aquas">section, article, aside, nav</span> 과 섹셔닝 루트 속성들 <span class="aquas">body, blockquote, details, fieldset, figure, td</span>가 있습니다. </li>
+								<li>
+									섹셔닝 요소 좋은 예시(헤딩을 함께 사용하면 헤딩 수준이 자동으로 바뀜.)
+									<img src="../img/pearl/sectioning.png" alt="섹셔닝 요소">
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<h4>도메인 오브젝트를 사용하는 코드</h4>
-					<div><img src="../img/9-10.jpg" alt=""></div>
+					<ul>
+						<li>
+							<ul>
+								<li>
+									섹셔닝 요소 안 좋은 예시
+									<img src="../img/pearl/sectioning_bad.png" alt="섹셔닝 요소 안 좋은 예시">
+								</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<p>Product 오브젝트가 하나 주어졌을 때, 해당 Product의 Category에는 상품이 모두 몇개가 있는지 알고 싶다면 다음과 같이 간단한 코드를 사용할 수 있다.</p>
-					<div><img src="../img/category-object.png" alt=""></div>
-					<small>SQL에 담긴 로직을 테스트하는 건 복잡하고 불편하다. 반면에 도메인 오브젝트를 사용하는 코드는 간단히 테스트 값을 담은 <span style="color:aqua">도메인 오브젝트</span>를 생성해서 쉽게 검증할 수 있다.</small>
-					<small>단점 : 최적화된 SQL을 매번 만들어 사용하는 경우에 비해 성능 면에서 조금 손해를 감수해야 할 수도 있다.</small>
+					<ul>
+						<li>
+							<ul>
+								<li>
+									섹셔닝 루트 예시 (섹셔닝 루트 외부에서 내부 개요에 접근불가)
+									<img src="../img/pearl/sectioningroots.png" alt="섹셔닝 루츠">
+								</li>	
+							</ul>
+						</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<p><span class="aquas">지연된 로딩(lazy loading)</span>기법을 이용하면 일단 최소한의 오브젝트 정보만 읽어두고 관계하고 있는 오브젝트가 필요한 경우에만 다이내믹하게 DB에서 다시 읽어올 수 있다.</p>
-					<p>가장 이상적으로 JPA나 JDO, 하이버네이트, TopLink와 같은 오브젝트/RDB 매핑(ORM) 기술은 기본적으로 lazy loading을 지원한다.</p>
+					<ul>
+						<li>알기 쉬운 URL 사용(REST: Representational State Transfer)
+							<ul>
+								<li>페이지 URL에는 가급적 <span class="aquas">페이지와 연관되는 단어</span>가 들어있는 것이 ID나 또는 이상한 이름의 매개변수가 들어 있는 경우보다 좋습니다. <br/>
+									 이는 검색엔진 뿐 아니라 사용자들에게도 이 페이지가 어떤 페이지인지를 좀 더 쉽게 파악하는데 도움을 줍니다.</li>
+							</ul>
+						</li>
+						<li>사이트맵의 작성</li>
+						<li>대표 URL
+							<ul>
+								<li>하나의 페이지에 대해 여러 URL이 존재할 경우 대표 URL(Canonical URL)을 사용하는 것이 좋습니다. 이 때 나머지 URL에 대해서는 대표 URL로 301 리다이렉션 시키거나 또는 페이지 내에 rel=“canonical” 표시를 추가해 주는 것이 좋습니다.
+									 특히 메인 페이지인 경우 하나의 대표 URL만 갖도록 나머지 URL에 대해서는 301 리다이렉션 처리를 해 줄 것을 권장합니다.
+									 <span class="aquas"> (예를 들어 웹사이트 URL이 www.example.com 과 example.com 둘 다 가능한 경우, 둘 중 하나를 대표 URL로 정하고 나머지는 리다이렉션 처리)</span></li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<h4>빈약한 도메인 오브젝트 방식</h4>
-					<p>가장 흔하게 사용되는 방식으로 도메인 오브젝트에 정보만 담겨있을 뿐 아무런 기능을 가지고 있지 않다.</p>
-					<div style="width:80%"><img src="../img/9-20.jpg" alt=""></div>
-					<small>SQL에 의존적인 데이터 방식보다는 훨씬 유연하지만, 여전히 서비스 계층의 메소드에 대부분 비즈니스 로직이 들어있기 때문에 재사용성이 떨어지고 중복 문제 발생</small>
+					<ul>
+						<li>앵커 태그와 텍스트
+							<ul>
+								<li>앵커 태그(a 태그)는 페이지 간 이동을 위한 태그입니다. 앵커 태그를 작성할 때는 이동할 페이지의 <span class="aquas">내용을 함축하는 간결한 텍스트</span>를 사용해야 하며, 글자로 쓸 내용을 이미지(image)로 만드는 것은 좋지 못합니다.</li>
+							</ul>
+						</li>
+						<li>모바일 대응이 잘 되어있는지(반응형)</li>
+						<li>스피드(자세한 내용은 google web conference 자료 내의 speedtest 관련 내용 참고)</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<h4>풍성한 도메인 오브젝트 방식</h4>
-					<p>빈약한 도메인 오브젝트의 단점을 극복하고 도메인 오브젝트의 객체지향적인 특징을 잘 사용할 수 있도록 개선 한 것.</p>
-					<div style="width:60%"><img src="../img/9-11.jpg" alt=""></div>
-					<small>이렇게 도메인 오브젝트 안에 로직을 담아두면 이 로직을 서비스 계층의 메소드에 따로 만드는 경우보다 <span style="color:aqua">응집도</span>가 높다. 데이터와 그것을 사용하는 기능이 한 곳에 모여있기 때문이다.</small>
+					<ul>
+						<li>rel=“nofollow”와 robots 메타 태그 <br/>앵커 태그에서 검색엔진이 따라가기를 원치 않는 경우에는 다음과 같이 rel=“nofollow” 속성을 추가할 수 있습니다.
+							<img src="../img/pearl/nofollow.png" alt="nofollow example">
+						</li>
+						<li>페이지 단위로 검색엔진의 접근을 막기 위해 HTML head 영역 내에 다음과 같이 robots 메타 태그를 추가할 수도 있습니다.
+								<img src="../img/pearl/noindex.png" alt="noindex example">
+								이 때 content 값에 noindex를 사용하면 해당 페이지는 검색 결과에서 제외되며, nofollow를 사용하면 검색로봇이 해당 페이지 내의 링크를 따라가지 않도록 설정할 수 있습니다. 기본 설정은 index, follow 입니다.
+						</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<div style="width:70%"><img src="../img/9-12.jpg" alt=""></div>
-					<div style="width:70%"><img src="../img/9-13.jpg" alt=""></div>
+					<ul>
+						<li>정리하면 다음과 같습니다.
+							<img src="../img/pearl/summary.png" alt="정리 요약">
+						</li>
+					</ul>
 				</section>
 				<section data-transition="convex">
-					<div><img src="../img/9-21.jpg" alt=""></div>
+					<ul>
+						<li>또 하나의 중요한 요소로 img 태그에 대한 alt 속성입니다. <br/>
+							alt는 이미지를 이해하지 못하는 유저 에이전트에게 이미지 내용을 전달하는 역할을 담당합니다. <ㅠㄱ/> 이미지를 이해하지 못하는 유저 에이전트는 음성 브라우저나 text브라우저 이외에 검색 엔진 로봇 등도 여기에 해당합니다. <br/>
+							 하지만, 검색 엔진 로봇에 대해서는 alt속성치를 다루는 방법이 상당히 애매하기도 하고 시기에 따라서는 검색 결과에 전혀 반영되지 않는 일도 있기 때문에 이 점에 주의해야 할 필요가 있습니다.
+						</li>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<ul>
+						<li>검색엔진과 alt 속성
+							<ul>
+								<li>alt속성치의 문자열은 인식하되, 가산점에는 사용하지 않습니다.（meta요소 description이나 keywords와 같은 취급）</li>
+								<li>alt속성치도 일반적인 text와 동일 취급합니다.</li>
+								<li>title 속성을 사용하여 검색 유입을 올릴 수는 있습니다.</li>
+							</ul>
+						</li>
+						<li>페이지 단위로 검색엔진의 접근을 막기 위해 HTML head 영역 내에 다음과 같이 robots 메타 태그를 추가할 수도 있습니다.
+								<img src="../img/pearl/noindex.png" alt="noindex example">
+								이 때 content 값에 noindex를 사용하면 해당 페이지는 검색 결과에서 제외되며, nofollow를 사용하면 검색로봇이 해당 페이지 내의 링크를 따라가지 않도록 설정할 수 있습니다. 기본 설정은 index, follow 입니다.
+						</li>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<ul>
+						<li>alt의 좋은 예와 나쁜 예(spam으로 간주될 수도 있음. 접근성에도 위배)
+							<div>
+								<img src="../img/pearl/alt.png" alt="alt 좋은 예 나쁜 예">
+								<img src="../img/pearl/spam.png" alt="spam">
+							</div>
+						</li>
+					</ul>
 				</section>
 			</section>
 			<section data-transition="zoom">
@@ -225,7 +377,12 @@
 					<h4>참고자료</h4>
 					<ol>
 						<li>프론트 엔드 개발자 학습 방향 (https://poiemaweb.com/Front-end)</li>
-						
+						<li>HTML4와 HTML5(https://apost.kr/58)</li>
+						<li>HTML5 명세(https://developer.mozilla.org/ko/docs/Web/HTML/HTML5)</li>
+						<li>HTML5.2 CSP와 nonce (https://simjaejin.tistory.com/31)</li>
+						<li>검색엔진 최적화 seo 가이드 (https://blog.usefulparadigm.com/%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84%EC%B5%9C%EC%A0%81%ED%99%94-seo-%EC%89%AC%EC%9A%B4-%EA%B0%80%EC%9D%B4%EB%93%9C-f003911b0a79)</li>
+						<li>Outline 설계하기(https://www.slideshare.net/headvoy/html5-38560624)</li>
+						<li>이미지 요소와 alt 속성의 최적화(https://mrseo.co.kr/img%EC%9A%94%EC%86%8C%EC%99%80-alt%EC%86%8D%EC%84%B1%EC%9D%98-%EC%B5%9C%EC%A0%81%ED%99%94/)</li>
 					</ol>
 				</section>
 			</section>

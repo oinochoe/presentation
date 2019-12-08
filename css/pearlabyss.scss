@@ -23,6 +23,7 @@ body {
 
 .reveal a {
   color: #fff;
+  text-decoration: underline;
   &:hover {
     color: #66d9ef;
   }
@@ -33,10 +34,10 @@ body {
   padding-top: 0;
 }
 
-.reveal .slides {
-  overflow: hidden;
+.flex {
+  display: flex;
+  align-items: center;
 }
-
 /**
  * customize assets
  */
@@ -97,9 +98,14 @@ img {
   display: block;
   max-height: 100%;
   max-width: 100%;
-  margin: 0 auto;
+  margin-left: 0;
   -webkit-transform: scale(0.83);
   transform: scale(0.83);
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+}
+.reveal small * {
+  vertical-align: bottom;
 }
 
 /* controls */
