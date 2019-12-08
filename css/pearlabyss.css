@@ -1,6 +1,6 @@
 /* custom */
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR");
-/* body - ngle */
+/* body - pearlabyss */
 body {
   background: url(../img/bg2.png) repeat-y;
 }
@@ -253,4 +253,4 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 .hljs-meta {
   color: #75715e;
 }
-/*# sourceMappingURL=custom.css.map */
+/*# sourceMappingURL=pearlabyss.css.map */

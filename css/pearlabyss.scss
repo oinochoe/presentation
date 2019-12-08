@@ -1,24 +1,27 @@
 /* custom */
+
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR");
-/* body - ngle */
+/* body - pearlabyss */
+
 body {
   background: url(../img/bg2.png) repeat-y;
 }
 
 /* font */
+
 * {
   font-family: "Noto Sans KR", sans-serif !important;
 }
 
 h1 {
   word-break: keep-all;
-}
-
-h1.long-text {
-  font-size: 2.3em;
+  &.long-text {
+    font-size: 2.3em;
+  }
 }
 
 /* img */
+
 img {
   display: block;
 }
@@ -28,6 +31,7 @@ img {
 }
 
 /* text */
+
 strong {
   word-break: keep-all;
   font-size: 30px !important;
@@ -59,29 +63,28 @@ p {
 }
 
 /* layout - left */
+
 section {
   text-align: left;
 }
 
 /* layout - flex */
+
 .slides {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-content: center;
+  justify-content: center;
 }
 
 /* table */
+
 table {
   font-size: 20px !important;
   word-break: keep-all;
 }
 
 /* list */
+
 ul,
 ol {
   font-size: 24px !important;
@@ -108,6 +111,7 @@ ul ol > li ~ li {
 }
 
 /* slide-num */
+
 .reveal .slide-number {
   right: auto;
   bottom: auto;
@@ -118,23 +122,27 @@ ul ol > li ~ li {
 }
 
 /* iframe */
+
 iframe {
   width: 100%;
   height: calc(100vh - 100px);
 }
 
 /* code */
+
 .reveal pre {
   margin-left: 0px;
 }
 
 /* hljs */
+
 .hljs {
   font-size: 14px !important;
   line-height: 1.2 !important;
 }
 
 /* pause */
+
 .reveal .pause-overlay {
   background-color: rgba(0, 0, 0, 0.8);
 }
@@ -142,7 +150,9 @@ iframe {
 /**
  * customize assets
  */
+
 /* logo */
+
 .logo {
   position: fixed;
   left: 2%;
@@ -163,9 +173,11 @@ iframe {
   .logo {
     display: none;
   }
+
   .no-logo {
     display: none;
   }
+
   body {
     background: #1aafba;
   }
@@ -176,6 +188,7 @@ iframe {
 Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
 
 */
+
 .hljs {
   display: block;
   overflow-x: auto;
@@ -253,4 +266,3 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 .hljs-meta {
   color: #75715e;
 }
-/*# sourceMappingURL=custom.css.map */
