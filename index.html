@@ -34,33 +34,33 @@
 
   <body>
     <div class="loader">
-      <!-- Plasma -->
-      <svg width="0" height="0">
-        <filter id="gooey-fill">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="20" result="blur" />
-          <feColorMatrix
-            in="blur"
-            mode="matrix"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 50 -16"
-            result="goo"
-          />
-        </filter>
+      <svg>
+        <defs>
+          <filter id="goo-filter">
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="10"
+              result="blur"
+            />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+              result="goo"
+            />
+          </filter>
+        </defs>
       </svg>
-      <div class="fill">
-        <div class="gooey-container">
-          <span class="level">
-            <span class="bubble"></span>
-            <span class="bubble"></span>
-            <span class="bubble"></span>
-            <span class="bubble"></span>
-            <span class="bubble"></span>
-            <span class="bubble"></span>
-            <span class="bubble"></span>
-            <span class="bubble"></span>
-          </span>
-        </div>
+
+      <div class="bangle">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-      <!--/Plasma -->
     </div>
     <div class="jelly-layout">
       <div id="jelly-wrap">
@@ -75,7 +75,11 @@
             <div class="jelly-section">
               <section class="container">
                 <h3>
-                  <a href="/pearlabyss/html.html" class="animation-container">
+                  <a
+                    target="_blank"
+                    href="./pearlabyss/html.html"
+                    class="animation-container"
+                  >
                     <span>H</span>
                     <span>T</span>
                     <span>M</span>
@@ -89,7 +93,7 @@
             <div class="jelly-section">
               <section class="container">
                 <h3>
-                  <a href="#none" class="animation-container">
+                  <a target="_blank" href="#none" class="animation-container">
                     <span>R</span>
                     <span>E</span>
                     <span>A</span>
@@ -103,7 +107,7 @@
             <div class="jelly-section">
               <section class="container">
                 <h3>
-                  <a href="#none" class="animation-container">
+                  <a target="_blank" href="#none" class="animation-container">
                     <span>R</span>
                     <span>E</span>
                     <span>A</span>
@@ -117,7 +121,7 @@
             <div class="jelly-section">
               <section class="container">
                 <h3>
-                  <a href="#none" class="animation-container">
+                  <a target="_blank" href="#none" class="animation-container">
                     <span>R</span>
                     <span>E</span>
                     <span>A</span>
@@ -131,7 +135,7 @@
             <div class="jelly-section">
               <section class="container">
                 <h3>
-                  <a href="#none" class="animation-container">
+                  <a target="_blank" href="#none" class="animation-container">
                     <span>S</span>
                     <span>P</span>
                     <span>R</span>
@@ -165,7 +169,7 @@
               <section class="container">
                 <h3>
                   <a
-                    href="./toby_6_5-8.html"
+                    href="./ngle/toby_6_5-8.html"
                     target="_blank"
                     class="animation-container"
                   >
@@ -183,7 +187,7 @@
               <section class="container">
                 <h3>
                   <a
-                    href="./toby_9_3.html"
+                    href="./ngle/toby_9_3.html"
                     target="_blank"
                     class="animation-container"
                   >
