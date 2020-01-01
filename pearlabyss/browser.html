@@ -193,6 +193,13 @@
 				<section data-transition="convex">
 					<h4>리플로우를 최적화하는 방법</h4>
 					<ul>
+						<li>아래 그림과 같은 결과를 볼 수 있습니다. </li>
+					</ul>
+					<a href="https://jsperf.com/performance-dom-renderings" target="_blank"><img class="big" src="../img/pearl/20-01-02/test_result.png" alt="테스트 결과"></a>
+				</section>
+				<section data-transition="convex">
+					<h4>리플로우를 최적화하는 방법</h4>
+					<ul>
 						<li>애니메이션이 들어간 노드는 <span class="aquas">가급적</span> position:fixed 또는 position:absolute로 지정하여 전체 노드에서 분리 시키도록 합니다.  </li>
 						<li><a href="https://codepen.io/oinochoe/pen/jOEGxVJ" target="_blank">예시코드</a></li>
 						<li>보통 (JS(Javascript) + CSS)를 활용한 에니메이션 효과는 해당 프레임에 따라 무수히 많은 Reflow 비용이 발생하게 됩니다.</li>
