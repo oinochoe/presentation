@@ -38,7 +38,7 @@
 		<!-- Any section element inside of this container is displayed as a slide -->
 		<div class="slides">
 			<section data-transition="convex">
-				<h1 class="long-text">브라우저 동작원리, 이벤트 버블링, strict</h1>
+				<h1 class="long-text">브라우저 동작원리, 이벤트 버블링</h1>
 				<p>
 					<small>Created by <a href="https://github.com/oinochoe/" target="_blank">Yeongmin Kim(20-01-02)</a></small>
 				</p>
@@ -47,8 +47,9 @@
 				<h2>목차</h2>
 				<ol>
 					<li>브라우저 동작원리</li>
+					<li>리페인트와 리플로우</li>
 					<li>이벤트 버블링</li>
-					<li>strict</li>
+					<li>참고자료</li>
 				</ol>
 			</section>
 			<section>
@@ -61,187 +62,168 @@
 					</a>
 				</section>
 				<section data-transition="convex">
-					<h4>1. 브라우저의 주요기능</h4>
+					<h4>브라우저의 주요기능</h4>
 					<ul>
 						<li>브라우저의 주요 기능은 사용자가 선택한 자원을 <span class="aquas">서버에 요청하고 브라우저에 표시</span>하는 것입니다.</li>
 						<li>브라우저는 HTML과 CSS 명세에 따라 HTML 파일을 해석해서 표시하는데 이 명세는 웹 표준화 기구인 <span class="aquas">W3C(World Wide Web Consortium)</span>에서 정합니다. </li>
 					</ul>
 				</section>
 				<section data-transition="convex">
-					<h4>2. 브라우저의 기본 구조</h4>
+					<h4>브라우저의 기본 구조</h4>
+				  <img class="big" src="../img/pearl/20-01-02/browser.png" alt="브라우저 동작 원리를 보여주는 표">
 					<ul>
-						<li><span class="aquas">사용자 인터페이스</span> - 주소 표시줄, 이전/다음 버튼, 북마크 메뉴 등. 요청한 페이지를 보여주는 창을 제외한 나머지 모든 부분이다.</li>
-						<li><span class="aquas">Contents Model</span>이라는 개념이 추가되어 문서의 Outline을 잡고 Contents를 구성할 수 있게 되었습니다.</li>
-						<li>다양한 기능들이 추가되었기 때문에 호환성 이슈가 있습니다.<a href="http://html5test.com/index.html" target="_blank">http://html5test.com/index.html</a></li>
-						<li>마크업 검사를 통해서 outline을 확인하고 더 좋은 마크업을 적용하기 위해 노력할 수 있습니다. <a href="http://validator.w3.org/" target="_blank">w3c validation</a></li>
-						<li>image 태그의 alt 속성에 관련된 설명은 후에 SEO 관련 내용에서 다시 설명하도록 하겠습니다.</li>
+						<li><span class="aquas">사용자 인터페이스</span> - 주소 표시줄, 이전/다음 버튼, 북마크 메뉴 등. 요청한 페이지를 보여주는 창을 제외한 나머지 모든 부분입니다.</li>
+						<li><span class="aquas">브라우저 엔진</span> - 사용자 인터페이스와 렌더링 엔진 사이의 동작을 제어합니다.</li>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<h4>브라우저의 기본 구조</h4>
+					<ul>
+						<li><span class="aquas">렌더링 엔진</span> - 요청한 콘텐츠를 표시. 예를 들어 HTML을 요청하면 HTML과 CSS를 파싱하여 화면에 표시합니다.</li>
+						<li><span class="aquas">통신</span> - HTTP 요청과 같은 네트워크 호출에 사용됩니다. 이것은 플랫폼 독립적인 인터페이스이고 각 플랫폼 하부에서 실행됩니다.</li>
+						<li><span class="aquas">UI 백엔드</span> - 콤보 박스와 창 같은 기본적인 장치를 그립니다. 플랫폼에서 명시하지 않은 일반적인 인터페이스로서, OS 사용자 인터페이스 체계를 사용합니다.</li>
+						<li><span class="aquas">자바스크립트 해석기</span> - 자바스크립트 코드를 해석하고 실행합니다.</li>
+						<li><span class="aquas">자료 저장소</span> - 이 부분은 자료를 저장하는 계층이다. 쿠키를 저장하는 것과 같이 모든 종류의 자원을 하드 디스크에 저장할 필요가 있다. HTML5 명세에는 브라우저가 지원하는 '웹 데이터 베이스'가 정의되어 있습니다.</li>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<h4>웹 데이터베이스를 왜 사용할까?</h4>
+					<ul>
+						<li>첫째, 사용자가 오프라인 일 때 앱이 작동하도록하고 네트워크가 다시 연결되면 데이터를 다시 동기화 할 수 있습니다.</li>
+						<li>둘째, 성능 향상입니다. 사용자가 다시 다운로드하기를 기다리지 않고 사이트를 클릭하자마자 많은 양의 데이터를 표시 할 수 있습니다. </li>
+						<li>셋째, 서버 인프라가 필요하지 않은보다 쉬운 프로그래밍 모델입니다. 물론 데이터가 더 취약하고 사용자가 여러 클라이언트에서 액세스 할 수 없으므로 중요하지 않은 데이터를 사용해야합니다.</li>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<h4>렌더링 엔진들과 브라우저</h4>
+					<ul>
+						<li>우선 브라우저 엔진들을 살펴보면 다음과 같습니다.</li>
+						<img class="big" src="../img/pearl/20-01-02/engines.png" alt="저명한 엔진들을 보여주는 표">
+						<li>현재, 파이어폭스와 safari를 제외한 모든 브라우저는 전부 Chromium을 기반으로 하고 있습니다.</li>
+						<li>Edge는 정확히는 Trident 엔진을 포기하고 Chromium 기반으로 구현하기로 하였고 현재 Canary(alpha) Build가 나온 상태입니다.</li>
+						<li>webkit은 앞으로도 apple을 등에 업고 꾸준히 발전해나갈 것이고, 다크모드와 같은 그래픽 분야에서 선두적인 역할을 할 것이라 예상됩니다.</li>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<h4>DOM 동작</h4>
+					<img class="big" src="../img/pearl/20-01-02/tree.png" alt="돔트리를 보여주는 그림">
+				</section>
+				<section data-transition="convex">
+					<h4>브라우저 렌더링 동작 순서</h4>
+					<ul>
+						<li>1. 불러오기(Load)</li>
+						<li>2. 파싱 (Parsing)</li>
+						<li>3. 렌더링 트리 만들기 - 색상과 면적 같은 시각적 속성 정보를 가지고 있습니다. (렌더 트리 생성시 필요없는 head, title, body태그등이 없고 display:none 처럼 DOM에 있지만 여과가 필요한 부분들을 제외해줍니다)</li>
+						<li>4. Layout:렌더 트리 배치(Reflow)</li>
+						<li>5. Paint: 그리기(Repaint) - 배치된 노드들을 visibility, outline, background-color, color와 같이 시각적 속성에 해당하는 형상을 만들어 내는 그리기 과정이다. 순서는 background > background-image > 아웃라인 > 컬러 등 순서</li>
 					</ul>
 				</section>
 				<section data-transition="convex">
 					<ul>
-						<li>HTML5 마크업시 Tag는 대소문자를 구분하지 않지만 가독성 측면이나 기존 개발 패턴에 준수하는 것이 좋기 때문에 소문자로 작성하는 것을 권장합니다.</li>
-						<li>HTML5에서 가장 크게 변화된 시멘틱 태그들을 살펴보면 다음과 같습니다.</li>
+						<li>렌더링 엔진은 순차적으로 수행하지 않고 점진적으로 수행합니다. 기다리는 동시에 받은 내용의 일부를 먼저 화면에 표시하는 것입니다.</li>
+						<li>TABLE의 경우는 기본적으로 점진적 렌더링이 적용되지 않습니다. (table-layout:fixed일 경우에만 점진적 렌더링이 적용) - 그래서 table-layout:auto 보다 <span class="aquas">table-layout:fixed</span>가 성능에 더 좋습니다.</li>
+						<li>auto - 자동으로 테이블 배열 기능을 사용. column 의 너비는 셀 안의 고정적으로 가장 넓은 콘텐트에 의해 정해짐. 최종 레이아웃이 결정되기 전까지 테이블의 모든 내용을 읽어들인 다음 정해지므로 다소 렌더링이 늦어질 수 있음.</li>
+						<li>fixed - 고정된 테이블 배열 기능을 사용. 수평레이아웃은 셀 안의 콘텐츠가 아니라 테이블의 너비와 컬럼의 너비에 의해 결정. auto layout 보다 렌더링 속도는 빠름.</li>
+						<img class="big" src="../img/pearl/20-01-02/table.png" alt="테이블 렌더링">
 					</ul>
-				  <img src="../img/pearl/semantic.png" alt="">
+				</section>
+				<section data-transition="convex">
+					<h4>브라우저 렌더링에 따른 규칙</h4>
+					<ul>
+						<li>CSS는 <code>&lt;head&gt;&lt;/head&gt;</code>태그 사이 문서를 파싱해서 DOM 노드로 변환을 해도 스타일 정보가 없으면 렌더 트리를 생성 할 수가 없습니다.</li>
+스타일 정보를 빨리 취득하기 위해 &lt;head&gt;&lt;/head&gt;태그 사이에 놓는것이 렌더 트리 생성시점을 앞당겨 주므로 head 태그 사이에 넣어주는 것이 좋습니다.</li>
+						<li>javscript 파일이 head 내에 위치하게 되면 파서가 파싱을 멈추고 스크립트 파일을 읽으므로 body태그 위에 스크립트 파일을 모아두는 것이 좋습니다.</li>
+					</ul>
+				</section>
+				<section data-transition="convex">
+						<img class="big" src="../img/pearl/20-01-02/async.png" alt="async defer 차이">
+				</section>
+				<section data-transition="convex">
+						<img class="big" src="../img/pearl/20-01-02/defer.png" alt="async defer 사용법">
+				</section>
+				<section data-transition="convex">
+						<ul>
+							<li>defer는 HTML parsing이 모두 끝난 뒤에 실행되므로 괜찮지만 async의 경우에는 <span class="aquas">다운로드 시점</span>이 중요하므로 주의해야 합니다.</li>
+							<li>하지만 HTML5 이후 <span class="aquas">async="false"</span> 속성이 추가되어 호출 순서대로 실행되도록 추가되었습니다.</li>
+						</ul>
+				</section>
+				<section data-transition="convex">
+						<img class="big" src="../img/pearl/20-01-02/ajax.png" alt="async false 예시">
+				</section>
+			</section>
+			<section data-transition="zoom">
+				<section data-transition="convex">
+					<h4>2. 리페인트와 리플로우 최소화</h4>
 				</section>
 				<section data-transition="convex">
 					<ul>
-						<li>검색엔진이 잘 검색할 수 있도록 의미론적으로 웹을 구성하는 것이 중요해졌습니다.</li>
-						<li>의미론적인 웹 태그를 사용하면 검색봇이 해당 사용자의 키워드에 따라 강조하고 싶은 정보가 검색되도록 도움을 줍니다.</li>
-						<li>
-								section, article, div의 차이는
-								<ol>
-									<li>내용이 독립적이고 스스로 설 수 있는 내용이라면 article</li>
-									<li>내용이 서로 관계가 있다면 section</li>
-									<li>의미적으로 관계가 없다면 div 사용</li>
-								</ol>
+						<li><span class="aquas">Reflow</span>란 생성된 DOM 노드의 레이아웃 수치(너비, 높이, 위치 등) 변경 시 영향 받은 모든 노드의(자신, 자식, 부모, 조상(결국 모든 노드) ) 수치를 다시 계산하여(Recalculate), 렌더 트리를 재생성하는 과정입니다.</li>
+						<li>Reflow 과정이 끝난 후 재 생성된 렌더 트리를 다시 그리게 되는데 이 과정을 <span class="aquas">Repaint</span>라 합니다.</li>
+						<pre>
+							<code class="hljs">
+      // 리플로우가 일어나는 상황
+	function reFlow() { 
+		document.getElementById('search_btn').style.width = '600px'; 
+		return false; 
+	}
+							</code>
+						</pre>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<h4>리플로우가 일어나는 상황</h4>
+					<ul>
+						<li>노드의 추가 또는 제거시. </li>
+						<li>요소의 위치 변경 시. </li>
+						<li>요소의 크기 변경 시.(margin, padding, border, width, height, 등..) </li>
+						<li>폰트 변경 과(텍스트 내용) 이미지 크기 변경 시.(크기가 다른 이미지로 변경 시) </li>
+						<li>페이지 초기 랜더링 시.(최초 Layout 과정) </li>
+						<li>윈도우 리사이징 시.</li>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<h4>리플로우를 최적화하는 방법</h4>
+					<ul>
+						<li>클래스 변화에 따른 스타일 변경 시, <span class="aquas">가급적</span> DOM 구조 상 끝단에 위치한 노드에 주어야 합니다. </li>
+						<li><a href="https://codepen.io/oinochoe/pen/wvBrjGx" target="_blank">예시코드</a></li>
+						<li>결과로 빠른 순서는 change(1.656ms) > second(1.783ms) > first(17.23ms) 입니다.</li>
+						<li>인터넷이 매우 빠른 환경에서는 영향이 미미하겠지만 느린 환경이나 돔이 매우 많은 환경에서는 어느정도 영향을 끼칩니다.</li>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<h4>리플로우를 최적화하는 방법</h4>
+					<ul>
+						<li>애니메이션이 들어간 노드는 <span class="aquas">가급적</span> position:fixed 또는 position:absolute로 지정하여 전체 노드에서 분리 시키도록 합니다.  </li>
+						<li><a href="https://codepen.io/oinochoe/pen/jOEGxVJ" target="_blank">예시코드</a></li>
+						<li>보통 (JS(Javascript) + CSS)를 활용한 에니메이션 효과는 해당 프레임에 따라 무수히 많은 Reflow 비용이 발생하게 됩니다.</li>
+						<li>하지만 position 속성을 "fixed" 또는 "absoute"로 값을 주면 지정된 노드는 전체 노드에서 분리됩니다. </li>
+					</ul>
+				</section>
+				<section data-transition="convex">
+					<h4>리플로우를 최적화하는 방법(Will-Change)</h4>
+					<ul>
+						<li>Will-Change 속성은 4가지가 있습니다.
+							<ol>
+								<li><span class="aquas">auto;</span></li>
+								<li><span class="aquas">scroll-position</span> : 스크롤 할 때 엘리먼트의 위치가 변경될 것을 알려줍니다. 이 값을 설정하면 브라우저는 스크롤 가능한 엘리먼트를 미리 최적화 하여 랜더링 합니다. 한 번에 많은 양을 스크롤하거나 빠른 스크롤이 필요한 경우에 사용합니다.</li>
+								<li><span class="aquas">contents</span> : 엘리먼트의 컨텐츠가 변경될 것을 알려줍니다. 브라우저는 보통 엘리먼트의 랜더링 결과를 캐싱합니다. 대부분의 엘리먼트가 변경되지 않고 변경되어도 위치가 바뀌는 정도의 미미한 변경만 발생하기 때문입니다. 하지만 엘리먼트가 계속해서 변경되는 경우 브라우저 캐시는 무의미하게 됩니다. 이 속성을 사용하게 되면 캐시를 하지 않고 변경될 때마다 처음부터 랜더링하게 됩니다.</li>
+								<li><span class="aquas">transform</span></li>
+								<li><span class="aquas">top,left</span></li>
+							</ol>
 						</li>
-					</ul>
-					<div class="flex">
-						<img src="../img/pearl/tag.png" alt="">
-						<img src="../img/pearl/article_section.png" alt="">
-					</div>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<li>반대로 순전히 보여지는 것에만 집중하던 태그들은 CSS로 처리가능하기 때문에 사라졌습니다.</li>
-						<li>basefont, big, center, font, striker, u 등...</li>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<li>HTML Document에 사용되는 확장 사양들이 추가되었습니다.</li>
-						<li>getElementsByClassName(), innserHTML, classList(has(), remove(), add(), toggle())</li>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<p>HTML5 태그들의 사용 가이드는 다음과 같습니다.</p>
-					<ul>
-						<li>1. figure와 figcaption
-								<img src="../img/pearl/figcaption.png" alt="">
-						</li>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<li>2. HTML4부터 사용되어 온 label 사용법은 다음과 같습니다. <br/> <small class="aquas"> form의 양식에 이름을 붙이는 태그입니다.</small>
-							<small> label 태그사이에 위치한 text, checkbox, radio 등은 클릭 가능 영역이 텍스트로 확장됩니다.</small>
-							<small><code> &lt;label for=""> 와 <태그 id=""></code>값은 서로 그룹을 형성합니다.</small>
-							<small>label 태그는 여러가지 form 요소들을 도와주고 편의성을 증진하는데 사용됩니다.</small>
-							<small>간단히 label안에 input 요소를 작성시는 for를 생략할 수 있습니다.</small>
-							<div class="flex">
-								<img src="../img/pearl/label.png" alt="라벨에 관련된 사진" style="height:300px">
-								<ul>
-									<li><a href="https://codepen.io/oinochoe/pen/wvBKVBN" target="_blank">label과 input</a></li> 
-									<li><a href="https://developer.mozilla.org/ko/docs/Web/HTML/Element/select" target="_blank">label과 select</a></li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<li>HTML5에 다양하게 추가된 태그들은 모두 각각의 역할과 의미에 따라서 적재적소에 배치되어야 합니다.</li>
-						<li>2017년 말에 발표된 HTML5.2에서 새롭게 변화된 기능들을 살펴보면서 조금 더 다양한 활용방법과 사용법을 익혀보겠습니다.</li>
+						<li>변경하고 싶은 속성을 사용할 수 있습니다. 쉼표(,)를 이용하여 두 개 이상의 속성을 사용할 수 있습니다. 크롬에서는 현재 6가지 속성(opacity, transform, top, left, right, bottom)만 적용됩니다. hover나 mouseenter 등을 통해 미리 알려주어야 합니다. </li>
 					</ul>
 				</section>
 			</section>
 			<section data-transition="zoom">
 				<section data-transition="convex">
-					<h4>3. HTML5.2에서의 변화</h4>
+					<h4>3. 이벤트 버블링</h4>
 				</section>
 				<section data-transition="convex">
+					<h4>이벤트 버블링</h4>
 					<ul>
-						<li>새로운 기능과 삭제된 기능 그리고 개선된 기능이 있습니다.</li>
-						<ul>
-							<li><a href="https://codepen.io/oinochoe/pen/rNaOXGj" target="_blank">dialog 태그</a></li>
-							<li>
-								rel 속성에는 기본값이 없습니다. 그리고 rel 속성이 생략되거나, 속성 값이 user-agent 에 인식되지 못하면 그 속성은 하이퍼링크나 대상 자원으로서 특별한 관련이 없다고 봅니다.
-								<small>link의 rel 속성은 링크된 문서와의 관계를 지정하는데 검색엔진이나 브라우저에게 정보를 주어 사용자의 요청에 더 정확한 대응이 가능하게 해줍니다.</small>
-								<img src="../img/pearl/link_rel.png" alt="링크 릴레이션에 관련된 내용">
-							</li>
-						</ul>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<ul>
-							<li>
-								apple-touch-icon에 sizes 속성이 추가되었습니다.
-								<img src="../img/pearl/apple-touch-icon.png" alt="apple touch icon">
-							</li>
-						</ul>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<ul>
-							<li>body 태그 내에서 style 태그 사용가능(가급적 head 요소에 작성(should) 해야 한다.)</li>
-							<li>main 태그는 여러개를 사용할 수 있지만 보이는 것(의미론적으로만)이 하나여야 한다.(style로 가리는 것은 w3c 마크업 validation에 오류로 선언됨)
-								<img src="../img/pearl/main.png" alt="main 태그">
-							</li>
-						</ul>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<ul>
-							<li>div 요소를 dl 요소 내에 사용할 수 있다(조건적으로) <br/>
-									단일 dl 요소 내에 dt와 dd를 그룹핑한 div와 dt와 dd요소는 서로 형제 노드 관계로 존재할 수 없다. <br/>
-									또한, dl 내의 div는 dt와 dd 외 다른 요소가 들어 올 수 없다.
-									<img src="../img/pearl/dl.png" alt="dl태그">
-							</li>
-						</ul>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<ul>
-							<li>dfn태그(학문적 개념이나 새로운 용어 및 전문어를 정의)의 li 태그 사용 가능
-									<img src="../img/pearl/dfn.png" alt="dfn태그">
-							</li>
-						</ul>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<ul>
-							<li>fieldset에 사용되는 legend 태그에 heading요소(h1~h6) 사용 가능 (스타일 자유도 상승(기존에는 p만 가능))</li>
-							<li>주석 내에 연속된 하이픈 작성해도 됨 (nu HTML Checker에서 검사해보아도 경고 메시지로 변경)</li>
-						</ul>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<ul>
-							<li>삭제된 기능으로는 keygen(폼(form)양식에서 한 쌍의 키(암호화된 비밀번호)를 제공), inputmode(곧 브라우저에서도 depreacted 된다고 함), menu, menuitem 태그 및 속성이 있습니다.</li>
-							<li>주석 내에 연속된 하이픈 작성해도 됨 (nu HTML Checker에서 검사해보아도 경고 메시지로 변경)</li>
-							<li>p 요소 하위의 Inline blocks, inline tables, floated, positioned block-level 요소 사용 불가</li>
-							<img src="../img/pearl/deprecated.png" alt="depreacted된 태그들">
-						</ul>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					  <img src="../img/pearl/goodtag.png" alt="좋은 태그">
-						<ul>
-							<ul>
-									<li>이러한 html5.2의 변화들이 가지는 목적성은 디자인의 자유도와 접근성 그리고 웹 표준에 따른 조금 더 의미론적인 검색엔진 최적화에 있습니다.</li>
-							</ul>
-						</ul>
-					</section>
-			</section>
-			<section data-transition="zoom">
-				<section data-transition="convex">
-					<h4>4. 검색 엔진 최적화(SEO)</h4>
-				</section>
-				<section data-transition="convex">
-					<small>흔히 알려진 검색엔진 최적화는 구글과 네이버가 제공하는 검색엔진 최적화 가이드를 중심으로 정리할 수 있지만 직접적으로 어떻게 작동하는지는 <span class="aquas">영업비밀</span>입니다.</small> <br/><br/>
-					<small>title 태그와 설명(description) 메타 태그는 검색엔진이 페이지의 내용을 파악할 때 기본으로 사용하는 데이터들이며, title 태그는 해당 페이지의 제목을, 그리고 descripiton 메타 태그에서는 그 페이지에 대한 설명을 포함시키면 됩니다. <br/>
-						제목과 설명은 페이지를 잘 표현할 수 있도록  <span class="aquas">페이지마다 고유하게 작성</span>합니다. <br/> 길이에 특별한 제한은 없지만, 네이버의 경우 <span class="aquas">제목은 15자 이내, 설명은 45자 이내</span>를 권장하고 있습니다.</small>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<li>오픈그래프(Open Graph) 태그
+						<li>이벤트 버블링은 특정 화면 요소에서 이벤트가 발생했을 때 해당 이벤트가 더 상위의 화면 요소들로 전달되어 가는 특성을 의미합니다. 
+							<img src="../img/pearl/20-01-02/bubbling.jpg" alt="이벤트 버블링">
 							<ul>
 								<li>오픈그래프 태그는 원래 페이스북(Facebook)에 공유될 때 사용되는 정보이지만, 최근에는 페이스북 뿐 아니라 여러 곳에서 활용되는 메타 데이터입니다. </li>
 							</ul>
@@ -249,132 +231,61 @@
 					</ul>
 				</section>
 				<section data-transition="convex">
+					<a href="https://codepen.io/oinochoe/pen/KKwXeXN" target="_blank">예제코드</a>
+				</section>
+				<section data-transition="convex">
+					<h4>이벤트 캡쳐링</h4>
 					<ul>
-						<li>제목 태그의 적절한 사용
-							
-								<a href="https://gsnedders.html5.org/outliner/">HTML5 Outliner</a>
-							<ul>
-								<li>W3C Validator에서 확인할 수 있었듯이 제목 태그의 적절한 사용에 따른 Outline은 웹 페이지의 개요(Outline)을 설명하기에 충분합니다.한 페이지 내에 너무 많은 제목 태그들이 사용되는 것은 좋지 못합니다. </li>
-								<li>
-									HTML4에서는 섹셔닝 요소와 함께 이루어진 outline이 목차역할을 하지 않았지만 HTML5에서는 섹셔닝 요소와 함께 이루어진 heading 요소들이 목차 역할을 합니다.
-									<img src="../img/pearl/outliner.png" alt="outline 비교">
-								</li>
-							</ul>
+						<li>이벤트 캡쳐는 이벤트 버블링과 반대 방향으로 진행되는 이벤트 전파 방식입니다.
+							<img src="../img/pearl/20-01-02/capturing.jpg" alt="이벤트 캡쳐링">
 						</li>
+				  </ul>
+				</section>
+				<section data-transition="convex">
+					<a href="https://codepen.io/oinochoe/pen/PowJaEo" target="_blank">예제코드</a><br/>
+					<ul>
+						<li>해당 이벤트를 감지하기 위해 이벤트 버블링과 반대 방향으로 탐색합니다.</li>
 					</ul>
 				</section>
 				<section data-transition="convex">
+					<h4>event.stopPropagation()</h4>
 					<ul>
-						<li>섹셔닝 요소들
-							<ul>
-								<li>섹셔닝 요소들로는 <span class="aquas">section, article, aside, nav</span> 과 섹셔닝 루트 속성들 <span class="aquas">body, blockquote, details, fieldset, figure, td</span>가 있습니다. </li>
-								<li>
-									섹셔닝 요소 좋은 예시(헤딩을 함께 사용하면 헤딩 수준이 자동으로 바뀜.)
-									<img src="../img/pearl/sectioning.png" alt="섹셔닝 요소">
-								</li>
-							</ul>
-						</li>
+						<li>위 API는 해당 이벤트가 전파되는 것을 막습니다. </li>
+						<li>이벤트 버블링의 경우에는 클릭한 요소의 이벤트만 발생시키고 상위 요소로 이벤트를 전달하는 것을 방해합니다.</li>
+						<li>그리고 이벤트 캡쳐의 경우에는 클릭한 요소의 최상위 요소의 이벤트만 동작시키고 하위 요소들로 이벤트를 전달하지 않습니다.</li>
+						<li>즉, 양방향이 이벤트 전파를 막는 것입니다.</li>
+						<li>각각의 예제에 적용해보면 버블링은 제일 하위 요소만, 캡쳐링은 제일 상위 요소만 이벤트가 발생하는 것을 확인할 수 있습니다.</li>
 					</ul>
 				</section>
 				<section data-transition="convex">
+					<h4>이벤트 위임 - Event Delegation</h4>
 					<ul>
-						<li>
-							<ul>
-								<li>
-									섹셔닝 요소 안 좋은 예시
-									<img src="../img/pearl/sectioning_bad.png" alt="섹셔닝 요소 안 좋은 예시">
-								</li>
-							</ul>
-						</li>
+						<li>이벤트 버블링과 캡쳐는 사실 이벤트 위임을 위한 선수 지식입니다.</li>
+						<li>이벤트 위임은 실제 바닐라 JS로 웹 앱을 구현할 때 자주 사용하게 되는 코딩 패턴입니다.</li>
+						<li> ‘하위 요소에 각각 이벤트를 붙이지 않고 상위 요소에서 하위 요소의 이벤트들을 제어하는 방식’입니다.</li>
 					</ul>
+					<a href="https://codepen.io/oinochoe/pen/zYxEaya" target="_blank">이벤트 위임을 사용하지 않은 예제코드</a>
 				</section>
 				<section data-transition="convex">
 					<ul>
-						<li>
-							<ul>
-								<li>
-									섹셔닝 루트 예시 (섹셔닝 루트 외부에서 내부 개요에 접근불가)
-									<img src="../img/pearl/sectioningroots.png" alt="섹셔닝 루츠">
-								</li>	
-							</ul>
-						</li>
-					</ul>
+						<li>위 예제에서 input이 하나 더 늘게 된다면 어떻게 될까요?</li>
+						<li>각각의 이벤트에 input 클릭을 걸기 위해서 또 이벤트를 추가해야될까요?</li>
+						<li>위와 같이 번거로운 작업을 없애기 위해서 이벤트 위임을 사용해보도록 하겠습니다.</li>
+					</ul><br/>
+					<a href="https://codepen.io/oinochoe/pen/MWYEXxO" target="_blank">이벤트 위임을 사용한 예제코드</a>
 				</section>
 				<section data-transition="convex">
-					<ul>
-						<li>알기 쉬운 URL 사용(REST: Representational State Transfer)
-							<ul>
-								<li>페이지 URL에는 가급적 <span class="aquas">페이지와 연관되는 단어</span>가 들어있는 것이 ID나 또는 이상한 이름의 매개변수가 들어 있는 경우보다 좋습니다. <br/>
-									 이는 검색엔진 뿐 아니라 사용자들에게도 이 페이지가 어떤 페이지인지를 좀 더 쉽게 파악하는데 도움을 줍니다.</li>
-							</ul>
-						</li>
-						<li>사이트맵의 작성</li>
-						<li>대표 URL
-							<ul>
-								<li>하나의 페이지에 대해 여러 URL이 존재할 경우 대표 URL(Canonical URL)을 사용하는 것이 좋습니다. 이 때 나머지 URL에 대해서는 대표 URL로 301 리다이렉션 시키거나 또는 페이지 내에 rel=“canonical” 표시를 추가해 주는 것이 좋습니다.
-									 특히 메인 페이지인 경우 하나의 대표 URL만 갖도록 나머지 URL에 대해서는 301 리다이렉션 처리를 해 줄 것을 권장합니다.
-									 <span class="aquas"> (예를 들어 웹사이트 URL이 www.example.com 과 example.com 둘 다 가능한 경우, 둘 중 하나를 대표 URL로 정하고 나머지는 리다이렉션 처리)</span></li>
-							</ul>
-						</li>
-					</ul>
+					<h4>이벤트 전파를 중단하는 네가지 방법</h4>
+					<img class="big" src="../img/pearl/20-01-02/event.jpg" alt="이벤트 중단방법">
 				</section>
 				<section data-transition="convex">
+					<h4>event.stopImmediatePropagation()</h4>
+					<a href="https://codepen.io/oinochoe/pen/vYEerqB" target="_blank">event.stopImmediatePropagation() 사용 전</a>
 					<ul>
-						<li>앵커 태그와 텍스트
-							<ul>
-								<li>앵커 태그(a 태그)는 페이지 간 이동을 위한 태그입니다. 앵커 태그를 작성할 때는 이동할 페이지의 <span class="aquas">내용을 함축하는 간결한 텍스트</span>를 사용해야 하며, 글자로 쓸 내용을 이미지(image)로 만드는 것은 좋지 못합니다.</li>
-							</ul>
-						</li>
-						<li>모바일 대응이 잘 되어있는지(반응형)</li>
-						<li>스피드(자세한 내용은 google web conference 자료 내의 speedtest 관련 내용 참고)</li>
+						<li>event.stopImmediatePropagation()를 사용하기 전에는 event.stopPropagation()에 의해서 전파는 막았으나 같은 DOM에 걸려있는 여러 이벤트가 동시에 발생하는 것을 볼 수 있습니다. </li>
+						<li>이러한 현상을 막고 싶을 때 사용할 수 있는 것이 event.stopImmediatePropagation() 이며, 호환성은 ie9 이상 적용됩니다(canIuse 확인 가능)</li>
 					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<li>rel=“nofollow”와 robots 메타 태그 <br/>앵커 태그에서 검색엔진이 따라가기를 원치 않는 경우에는 다음과 같이 rel=“nofollow” 속성을 추가할 수 있습니다.
-							<img src="../img/pearl/nofollow.png" alt="nofollow example">
-						</li>
-						<li>페이지 단위로 검색엔진의 접근을 막기 위해 HTML head 영역 내에 다음과 같이 robots 메타 태그를 추가할 수도 있습니다.
-								<img src="../img/pearl/noindex.png" alt="noindex example">
-								이 때 content 값에 noindex를 사용하면 해당 페이지는 검색 결과에서 제외되며, nofollow를 사용하면 검색로봇이 해당 페이지 내의 링크를 따라가지 않도록 설정할 수 있습니다. 기본 설정은 index, follow 입니다.
-						</li>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<li>정리하면 다음과 같습니다.
-							<img src="../img/pearl/summary.png" alt="정리 요약">
-						</li>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<li>또 하나의 중요한 요소로 img 태그에 대한 alt 속성입니다. <br/>
-							alt는 이미지를 이해하지 못하는 유저 에이전트에게 이미지 내용을 전달하는 역할을 담당합니다. <br/> 이미지를 이해하지 못하는 유저 에이전트는 음성 브라우저나 text브라우저 이외에 검색 엔진 로봇 등도 여기에 해당합니다. <br/>
-							 하지만, 검색 엔진 로봇에 대해서는 alt속성치를 다루는 방법이 상당히 애매하기도 하고 시기에 따라서는 검색 결과에 전혀 반영되지 않는 일도 있기 때문에 이 점에 주의해야 할 필요가 있습니다.
-						</li>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<li>검색엔진과 alt 속성
-							<ul>
-								<li>alt속성치의 문자열은 인식하되, 가산점에는 사용하지 않습니다.（meta요소 description이나 keywords와 같은 취급）</li>
-								<li>alt속성치도 일반적인 text와 동일 취급합니다.</li>
-								<li>title 속성을 사용하여 검색 유입을 올릴 수는 있습니다.</li>
-							</ul>
-						</li>
-					</ul>
-				</section>
-				<section data-transition="convex">
-					<ul>
-						<li>alt의 좋은 예와 나쁜 예(spam으로 간주될 수도 있음. 접근성에도 위배)
-							<div>
-								<img src="../img/pearl/alt.png" alt="alt 좋은 예 나쁜 예">
-								<img src="../img/pearl/spam.png" alt="spam">
-							</div>
-						</li>
-					</ul>
+					<a href="https://codepen.io/oinochoe/pen/JjorZQx" target="_blank">event.stopImmediatePropagation() 사용</a>
 				</section>
 			</section>
 			<section data-transition="zoom">
@@ -383,19 +294,15 @@
 					<ol>
 						<li>브라우저 동작 원리 (https://d2.naver.com/helloworld/59361)</li>
 						<li>브라우저 동작 원리를 이해한 후 성능향상 (https://juunone.github.io/browser/)</li>
-
-
-						<li>HTML4와 HTML5(https://apost.kr/58)</li>
-						<li>HTML5 명세(https://developer.mozilla.org/ko/docs/Web/HTML/HTML5)</li>
-						<li>HTML5.2 CSP와 nonce (https://simjaejin.tistory.com/31)</li>
-						<li>검색엔진 최적화 seo 가이드 (https://blog.usefulparadigm.com/%EA%B2%80%EC%83%89%EC%97%94%EC%A7%84%EC%B5%9C%EC%A0%81%ED%99%94-seo-%EC%89%AC%EC%9A%B4-%EA%B0%80%EC%9D%B4%EB%93%9C-f003911b0a79)</li>
-						<li>Outline 설계하기(https://www.slideshare.net/headvoy/html5-38560624)</li>
-						<li>이미지 요소와 alt 속성의 최적화(https://mrseo.co.kr/img%EC%9A%94%EC%86%8C%EC%99%80-alt%EC%86%8D%EC%84%B1%EC%9D%98-%EC%B5%9C%EC%A0%81%ED%99%94/)</li>
-						<li>HTML5.3 리스트(2018.10.18 draft) (https://www.w3.org/TR/html53/)</li>
+						<li>크롬 엔진의 역사 (https://en.wikipedia.org/wiki/Google_Chrome_version_history)</li>
+						<li>2019년 브라우저의 상태 (https://medium.com/@euncho/2019%EB%85%84-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%98-%EC%83%81%ED%83%9C-e73ab86bcbd0)</li>
+						<li>리페인트와 리플로우 최소화 (https://webclub.tistory.com/346)</li> 
+						<li>이벤트 버블링, 이벤트 캡처, 그리고 이벤트위임까지 (https://joshua1988.github.io/web-development/javascript/event-propagation-delegation/)</li>
+						<li>이벤트 전파를 중단하는 네가지 방법 (https://programmingsummaries.tistory.com/313)</li>
 					</ol>
 				</section>
 			</section>
-			<section class="no-logo" data-background="https://media.giphy.com/media/l1Lc1Kn9hImgpx5Re/giphy.gif" data-transition="zoom">
+			<section class="no-logo" data-background="https://media.giphy.com/media/igmqMrbHXmClG8Mo7t/giphy.gif" data-transition="zoom">
 				<!-- <h1 class="long-text">Thank You</h1> -->
 			</section>
 		</div>
