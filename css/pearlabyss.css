@@ -125,7 +125,7 @@ img {
 .reveal section img {
   border-color: #66d9ef;
   display: block;
-  max-height: 90vh;
+  max-height: 72vh;
   max-width: 100%;
   margin-left: 0;
   -webkit-transform: scale(0.83);
