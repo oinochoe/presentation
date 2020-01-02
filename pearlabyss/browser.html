@@ -145,7 +145,16 @@
 						<ul>
 							<li>defer는 HTML parsing이 모두 끝난 뒤에 실행되므로 괜찮지만 async의 경우에는 <span class="aquas">다운로드 시점</span>이 중요하므로 주의해야 합니다.</li>
 							<li>하지만 HTML5 이후 <span class="aquas">async="false"</span> 속성이 추가되어 호출 순서대로 실행되도록 추가되었습니다.</li>
+							<li>async와 defer는 인라인태그에는 적용되지 않습니다.</li>
 						</ul>
+				</section>
+				<section data-transition="convex">
+					<h4>보충 - async false에 관한 이해</h4>
+					<img class="big" src="../img/pearl/20-01-02/asyncfalse2.jpg" alt="async false에 관한 이해">
+				</section>
+				<section data-transition="convex">
+					<h4>보충 - async false에 관한 이해</h4>
+					<img class="big" src="../img/pearl/20-01-02/asyncfalse.png" alt="async false에 관한 이해">
 				</section>
 				<section data-transition="convex">
 						<img class="big" src="../img/pearl/20-01-02/ajax.png" alt="async false 예시">
@@ -323,6 +332,8 @@
 					<ol>
 						<li>브라우저 동작 원리 (https://d2.naver.com/helloworld/59361)</li>
 						<li>브라우저 동작 원리를 이해한 후 성능향상 (https://juunone.github.io/browser/)</li>
+						<li>브라우저 동작 원리 및 async defer (https://webclub.tistory.com/630)</li>
+						<li>async false (https://developer.mozilla.org/ko/docs/Web/HTML/Element/script)</li>
 						<li>크롬 엔진의 역사 (https://en.wikipedia.org/wiki/Google_Chrome_version_history)</li>
 						<li>2019년 브라우저의 상태 (https://medium.com/@euncho/2019%EB%85%84-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%98-%EC%83%81%ED%83%9C-e73ab86bcbd0)</li>
 						<li>리페인트와 리플로우 최소화 (https://webclub.tistory.com/346)</li> 
