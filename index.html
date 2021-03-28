@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
+
+<head>
     <meta charset="utf-8" />
-    <title>Young Man</title>
+    <title>Noel : Presenter</title>
     <meta name="description" content="index" />
     <meta name="author" content="Yeongmin Kim" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no minimal-ui"
-    />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no minimal-ui" />
     <link rel="stylesheet" href="css/index.css" />
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//s.cdpn.io/6859/tween.min.js"></script>
@@ -22,19 +17,19 @@
     <script src="//s.cdpn.io/6859/paper.js"></script>
     <script defer src="js/index.js"></script>
     <script>
-      $(document).ready(function() {
-        setTimeout(() => {
-          $(".loader")
-            .stop()
-            .fadeOut(500);
-        }, 3000);
-      });
+        $(document).ready(function() {
+            setTimeout(() => {
+                $(".loader")
+                    .stop()
+                    .fadeOut(500);
+            }, 3000);
+        });
     </script>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="loader">
-      <svg>
+        <svg>
         <defs>
           <filter id="goo-filter">
             <feGaussianBlur
@@ -52,175 +47,164 @@
         </defs>
       </svg>
 
-      <div class="bangle">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+        <div class="bangle">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
     <div class="jelly-layout">
-      <div id="jelly-wrap">
-        <div class="menu-box">
-          <canvas
-            data-colors="#14646B:#2C7476:#83ACAE:#639599:#001D4A:#C02942:#542437:#53777A:#ECD078:#FE4365"
-            data-sectionHeight="200"
-            data-contentId="jelly-content"
-            id="jellyCanvas"
-          ></canvas>
-          <div class="jelly-content">
-            <div class="jelly-section">
-              <section class="container">
-                <h3>
-                  <a
-                    target="_blank"
-                    href="./pearlabyss/html.html"
-                    class="animation-container"
-                  >
-                    <span>H</span>
-                    <span>T</span>
-                    <span>M</span>
-                    <span>L</span>
-                    <span>5</span>
-                    <span>!</span>
-                  </a>
-                </h3>
-              </section>
-            </div>
-            <div class="jelly-section">
-              <section class="container">
-                <h3>
-                  <a
-                    target="_blank"
-                    href="./pearlabyss/browser.html"
-                    class="animation-container"
-                  >
-                    <span>B</span>
-                    <span>R</span>
-                    <span>O</span>
-                    <span>W</span>
-                    <span>S</span>
-                    <span>E</span>
-                    <span>R</span>
-                  </a>
-                </h3>
-              </section>
-            </div>
-            <div class="jelly-section">
-              <section class="container">
-                <h3>
-                  <!-- <a
+        <div id="jelly-wrap">
+            <div class="menu-box">
+                <canvas data-colors="#14646B:#2C7476:#83ACAE:#639599:#001D4A:#C02942:#542437:#53777A:#ECD078:#FE4365" data-sectionHeight="200" data-contentId="jelly-content" id="jellyCanvas"></canvas>
+                <div class="jelly-content">
+                    <div class="jelly-section">
+                        <section class="container">
+                            <h3>
+                                <a target="_blank" href="./pearlabyss/seo.html" class="animation-container">
+                                    <span>S</span>
+                                    <span>.</span>
+                                    <span>E</span>
+                                    <span>.</span>
+                                    <span>O</span>
+                                </a>
+                            </h3>
+                        </section>
+                    </div>
+                    <div class="jelly-section">
+                        <section class="container">
+                            <h3>
+                                <a target="_blank" href="./pearlabyss/html.html" class="animation-container">
+                                    <span>H</span>
+                                    <span>T</span>
+                                    <span>M</span>
+                                    <span>L</span>
+                                    <span>5</span>
+                                    <span>!</span>
+                                </a>
+                            </h3>
+                        </section>
+                    </div>
+                    <div class="jelly-section">
+                        <section class="container">
+                            <h3>
+                                <a target="_blank" href="./pearlabyss/browser.html" class="animation-container">
+                                    <span>B</span>
+                                    <span>R</span>
+                                    <span>O</span>
+                                    <span>W</span>
+                                    <span>S</span>
+                                    <span>E</span>
+                                    <span>R</span>
+                                </a>
+                            </h3>
+                        </section>
+                    </div>
+                    <div class="jelly-section">
+                        <section class="container">
+                            <h3>
+                                <!-- <a
                     target="_blank"
                     href="./pearlabyss/markup.html"
                     class="animation-container"
                   > -->
-                  <!-- <span>M</span>
+                                <!-- <span>M</span>
                     <span>A</span>
                     <span>R</span>
                     <span>K</span>
                     <span>U</span>
                     <span>P</span> -->
-                  <!-- </a> -->
-                </h3>
-              </section>
+                                <!-- </a> -->
+                            </h3>
+                        </section>
+                    </div>
+                    <div class="jelly-section">
+                        <section class="container">
+                            <h3>
+                                <a target="_blank" href="#none" class="animation-container">
+                                    <span>R</span>
+                                    <span>E</span>
+                                    <span>A</span>
+                                    <span>D</span>
+                                    <span>Y</span>
+                                    <span>!</span>
+                                </a>
+                            </h3>
+                        </section>
+                    </div>
+                    <div class="jelly-section">
+                        <section class="container">
+                            <h3>
+                                <a target="_blank" href="#none" class="animation-container">
+                                    <span>S</span>
+                                    <span>P</span>
+                                    <span>R</span>
+                                    <span>I</span>
+                                    <span>N</span>
+                                    <span>G</span>
+                                </a>
+                            </h3>
+                        </section>
+                    </div>
+                    <div class="jelly-section">
+                        <section class="container">
+                            <h3>
+                                <a href="./toby_chapter_2_test/index.html" target="_blank" class="animation-container">
+                                    <span>0</span>
+                                    <span>2</span>
+                                    <span>&nbsp;</span>
+                                    <span>T</span>
+                                    <span>E</span>
+                                    <span>S</span>
+                                    <span>T</span>
+                                </a>
+                            </h3>
+                        </section>
+                    </div>
+                    <div class="jelly-section">
+                        <section class="container">
+                            <h3>
+                                <a href="./ngle/toby_6_5-8.html" target="_blank" class="animation-container">
+                                    <span>0</span>
+                                    <span>6</span>
+                                    <span>&nbsp;</span>
+                                    <span>A</span>
+                                    <span>O</span>
+                                    <span>P</span>
+                                </a>
+                            </h3>
+                        </section>
+                    </div>
+                    <div class="jelly-section">
+                        <section class="container">
+                            <h3>
+                                <a href="./ngle/toby_9_3.html" target="_blank" class="animation-container">
+                                    <span>0</span>
+                                    <span>9</span>
+                                    <span>&nbsp;</span>
+                                    <span>P</span>
+                                    <span>R</span>
+                                    <span>O</span>
+                                    <span>J</span>
+                                    <span>E</span>
+                                    <span>C</span>
+                                    <span>T</span>
+                                </a>
+                            </h3>
+                        </section>
+                    </div>
+                    <div class="jelly-section"></div>
+                    <div class="jelly-section"></div>
+                    <div class="jelly-section"></div>
+                    <div class="jelly-section"></div>
+                </div>
             </div>
-            <div class="jelly-section">
-              <section class="container">
-                <h3>
-                  <a target="_blank" href="#none" class="animation-container">
-                    <span>R</span>
-                    <span>E</span>
-                    <span>A</span>
-                    <span>D</span>
-                    <span>Y</span>
-                    <span>!</span>
-                  </a>
-                </h3>
-              </section>
-            </div>
-            <div class="jelly-section">
-              <section class="container">
-                <h3>
-                  <a target="_blank" href="#none" class="animation-container">
-                    <span>S</span>
-                    <span>P</span>
-                    <span>R</span>
-                    <span>I</span>
-                    <span>N</span>
-                    <span>G</span>
-                  </a>
-                </h3>
-              </section>
-            </div>
-            <div class="jelly-section">
-              <section class="container">
-                <h3>
-                  <a
-                    href="./toby_chapter_2_test/index.html"
-                    target="_blank"
-                    class="animation-container"
-                  >
-                    <span>0</span>
-                    <span>2</span>
-                    <span>&nbsp;</span>
-                    <span>T</span>
-                    <span>E</span>
-                    <span>S</span>
-                    <span>T</span>
-                  </a>
-                </h3>
-              </section>
-            </div>
-            <div class="jelly-section">
-              <section class="container">
-                <h3>
-                  <a
-                    href="./ngle/toby_6_5-8.html"
-                    target="_blank"
-                    class="animation-container"
-                  >
-                    <span>0</span>
-                    <span>6</span>
-                    <span>&nbsp;</span>
-                    <span>A</span>
-                    <span>O</span>
-                    <span>P</span>
-                  </a>
-                </h3>
-              </section>
-            </div>
-            <div class="jelly-section">
-              <section class="container">
-                <h3>
-                  <a
-                    href="./ngle/toby_9_3.html"
-                    target="_blank"
-                    class="animation-container"
-                  >
-                    <span>0</span>
-                    <span>9</span>
-                    <span>&nbsp;</span>
-                    <span>P</span>
-                    <span>R</span>
-                    <span>O</span>
-                    <span>J</span>
-                    <span>E</span>
-                    <span>C</span>
-                    <span>T</span>
-                  </a>
-                </h3>
-              </section>
-            </div>
-            <div class="jelly-section"></div>
-            <div class="jelly-section"></div>
-            <div class="jelly-section"></div>
-            <div class="jelly-section"></div>
-          </div>
         </div>
-      </div>
     </div>
-  </body>
+</body>
+
 </html>

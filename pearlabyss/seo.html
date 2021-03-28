@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>21-03-28 SEO에 대하여</title>
+    <meta name="description" content="SEO">
+    <meta name="author" content="Yeongmin Kim">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no minimal-ui">
+
+    <link rel="stylesheet" href="../css/reveal.css">
+    <link rel="stylesheet" href="../css/theme/ngle.css" id="theme">
+
+    <link rel="stylesheet" href="../lib/css/zenburn.css">
+    <link rel="stylesheet" href="../css/pearlabyss.css">
+    <style>
+        .flex.w-50 {
+            align-items: flex-start;
+        }
+        
+        .flex.w-50 img {
+            display: block;
+            max-width: 50%;
+            max-height: 100vh;
+            -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+            border: none;
+        }
+        
+        .flex.w-50 small {
+            width: 50%;
+        }
+    </style>
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? '../css/print/pdf.css' : '../css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+		<script src="../lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+    <!-- <div class="logo">
+        <a href="https://www.pearlabyss.com/" target="_blank"><img src="../img/pearlabyss.svg" alt="펄어비스"></a>
+    </div> -->
+    <div class="reveal">
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section data-transition="convex">
+                <h1 class="long-text">S.E.O</h1>
+                <p>
+                    <small>Created by <a href="https://github.com/oinochoe/" target="_blank">Yeongmin Kim(21-03-29)</a></small>
+                </p>
+            </section>
+
+            <section data-transition="convex">
+                <h2>목차</h2>
+                <ol>
+                    <li>검색엔진 최적화란</li>
+                    <li>Heading태그 중요성 및 사례</li>
+                    <li>noreferer, noopener, nofollow</li>
+                </ol>
+            </section>
+            <section>
+                <section data-transition="convex">
+                    <h4>1. 검색엔진 최적화란</h4>
+                </section>
+                <section data-transition="convex">
+                    SEO는 <span class="aquas">Search Engine Optimization</span>의 약자입니다. <br/> 쉽게 검색엔진한테 잘 보이는 것이라고 생각하면 됩니다.
+                </section>
+            </section>
+            <section data-transition="zoom">
+                <section data-transition="convex">
+                    <h4>2. Heading태그 중요성 및 사례</h4>
+                </section>
+                <section data-transition="convex">
+                    <h4>검색 알고리즘</h4>
+                    <p>구글 랭킹시스템의 알고리즘 기준</p>
+                    <small>
+                    - 관련성, 유용성 <br/>
+                    - 출처 전문성<br/>
+                    - 사용자 위치 및 설정<br/>
+                    - 등등 수많은 요소<br/>
+                    - 검색어에 따라 그 때 그 때 다르게 적용되는 알고리즘<br/>
+                    - 검색어를 이해하기 위해 언어 모델 구축(decipher)<br/>
+                    - 철자 오류 해석(철자가 오류났어도 자연스러운 해석이 되도록 하는 알고리즘)<br/>
+                    - 자연 언어 이해 적용(동의어 시스템)<br/>
+                    - 결과를 잘 보여주는지<br/>
+                    - 다양한 브라우저에서 보이는지<br/>
+                    - 다양한 디바이스에서 보이는지 <br/>
+                    - pageSpeed 결과에 높게 나오는지(lighthouse 포함)<br/>
+                    .<br/>
+                    .</small>
+                </section>
+                <section data-transition="convex">
+                    <h4>현 상황 및 개선 방향</h4>
+                    <small>너무 많은 요소들이 있지만 heading태그만 잘 작성해주어도 많은 부분 개선 가능합니다.</small>
+                </section>
+                <section data-transition="convex">
+                    <h4>Title, Description</h4>
+                    <div>
+                        <img src="../img/seo/image_title_description.jpeg" alt="">
+                    </div>
+                </section>
+                <section data-transition="convex">
+                    <h4>개선필요사례 : 검은사막 게임소개 페이지(한글화)</h4>
+                    <div>
+                        <img src="../img/seo/게임소개_heading.png" alt="">
+                    </div>
+                </section>
+                <section data-transition="convex">
+                    <div class="flex w-50">
+                        <small>한글 - 네이버</small>
+                        <small>한글 - 구글</small>
+                    </div>
+                    <div class="flex w-50">
+                        <img src="../img/seo/검은사막_한글화.png" alt=""></small>
+                        <img src="../img/seo/게임소개_한글화.png" alt="">
+                    </div>
+                </section>
+                <section data-transition="convex">
+                    <div class="flex w-50">
+                        <small>영문 - 네이버</small>
+                        <small>영문 - 구글</small>
+                    </div>
+                    <div class="flex w-50">
+                        <img src="../img/seo/게임소개_영문_naver.png" alt=""></small>
+                        <img src="../img/seo/게임소개_영문.png" alt="">
+                    </div>
+                </section>
+                <section data-transition="convex">
+                    <h4>개선필요사례 : 검은사막 다운로드 페이지(아웃라인 : 큐탱글)</h4>
+                    <div class="flex w-50">
+                        <small>큐탱글 - 아웃라인</small>
+                        <small>검은사막 - 아웃라인</small>
+                    </div>
+                    <div class="flex w-50">
+                        <img src="../img/seo/blackdesert_computer.png" alt="">
+                        <img src="../img/seo/blackdesert_computer_our.png" alt="">
+                    </div>
+                </section>
+                <section data-transition="convex">
+                    <h4>검색 결과</h4>
+                    <div>
+                        <img src="../img/seo/blackdesert_compute_google.png" alt="">
+                    </div>
+                </section>
+                <section data-transition="convex">
+                    <div class="flex w-50">
+                        <small>영문 - 네이버</small>
+                        <small>영문 - 구글</small>
+                    </div>
+                    <div class="flex w-50">
+                        <img src="../img/seo/게임소개_영문_naver.png" alt=""></small>
+                        <img src="../img/seo/게임소개_영문.png" alt="">
+                    </div>
+                </section>
+                <section data-transition="convex">
+                    <small>헤딩 요소가 아닌 요소로 검색</small>
+                    <div>
+                        <img src="../img/seo/heading_level_outline_blackdesert_naver_x.png" alt="">
+                    </div>
+                </section>
+                <section data-transition="convex">
+
+                    <small>헤딩으로검색 : 검은사막 클래스 소개 페이지(아웃라인에 맞춰 섹셔닝 요소 조정 필요는 있음)</small>
+                    <div class="flex w-50">
+                        <small>금수랑 heading 태그로 검색</small>
+                        <small>워리어 heading 태그로 검색</small>
+                    </div>
+                    <div class="flex w-50">
+                        <img src="../img/seo/heading_level_outline_blackdesert_naver_o.png" alt=""></small>
+                        <img src="../img/seo/heading_level_outline_blackdesert_google.png" alt="">
+                    </div>
+                    <div class="flex w-50">
+                        <small>세이지 heading 태그로 검색</small>
+                    </div>
+                    <div class="flex w-50">
+                        <img src="../img/seo/heading_level_outline_blackdesert_naver.png" alt=""></small>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <section data-transition="convex">
+                    <h4>3. noopener, noreferrer, nofollow</h4>
+                </section>
+                <section data-transition="convex">
+                    <h4>noopener</h4>
+                    <p>
+                        주로 a링크에 많이 사용한다고 알려져있는데,
+                        <code> &lt;form&gt; 태그에 target="_blank"가 있을 때도 붙여줘야 합니다.</code>
+                        <span class="aquas">tabnabbing</span>이라는 fishing 공격에 사용됩니다.<br> noopener는 SEO에 영향을 끼치지 않으므로 보안을 위해 안전하게 사용할 수 있습니다.</p>
+                </section>
+                <section data-transition="convex">
+                    <p>
+                        window.open을 사용할 때 window.open('https://www.naver.com', 'naver', 'width=1000,height=500,resizable,scrollbars,<span class="aquas">noopener</span>');<br/><br/> 형태로 사용하면 window.opener가 null로 됩니다. <br/> fishing 공격형태인 window.opener.location으로
+                        부모창을 조작할 수 없습니다.
+                    </p>
+                </section>
+                <section data-transition="convex">
+                    <p>자동으로 붙여주더라도 메일폼에 직접적으로 noopener, noreferrer를 선언해주는 것도 중요합니다.
+                        <img src="../img/seo/noreferrer_x.png" alt="" style="max-height:100vh;"></p>
+                </section>
+                <section data-transition="convex">
+                    <h4>noreferrer</h4>
+                    <p>
+                        noreferrer는 다른 페이지를 탐색할 때 브라우저가 참조 웹 페이지의 주소를 보내지 못하게 합니다.
+                        <span class="aquas">noreferer</span>에 대하여 Google 애널리틱스 트래픽은 추천 대신 직접 트래픽으로 표시됩니다.</p>
+                </section>
+                <section data-transition="convex">
+                    <p>
+                        그러면 홍보 노력에는 간접적으로 영향을 끼치게 됩니다. 하지만 보안을 위해서 크로스브라우징 상에서 noopener가 지원하지 못하는 영역까지 포괄하려면 noreferrer을 추가해주어야 합니다.
+                        <img src="../img/seo/direct-referrer.png" alt="" style="max-height:100vh;"></p>
+                </section>
+                <section data-transition="convex">
+                    <p>
+                        또한, noreferrer는 제휴 링크에는 영향을 미치지 않습니다. 추천 트래픽에만 영향을 주기 때문에 의존하지 않고 링크에 포함된 제휴 id에 의존하기 때문입니다.</p>
+                </section>
+                <section data-transition="convex">
+                    <h4>nofollow</h4>
+                    <p>
+                        nofollow는 외부 링크에 추가하면 기본적으로 한 페이지에서 다른 페이지로의 페이지 링크자체를 전달하지 않습니다. <br/> <br/> noreferrer는 참조 정보를 전달하지 않지만 링크는 따라갑니다.
+                        <br/> 신뢰하지 않는 링크에는 nofollow를 사용하고 다른 사이트가 링크되었음을 알리지 않으려면 noreferrer를 사용하세요. <br/> <br/> 일반적으로는 댓글 또는 포럼 내부의 링크들에 대해서 사용됩니다. 스팸 정보들은 사이트의 정보들을 저품질로 인식하게 할 수 있으므로 게시판 내의 링크들은 되도록이면 nofollow를 추가로 붙여주시면 될 것 같습니다.
+                    </p>
+                </section>
+            </section>
+            <section class="no-logo" data-background="https://media.giphy.com/media/3ohs86vZAWiJXWvQI0/source.gif" data-transition="zoom">
+                <!-- <h1 class="long-text">감사합니다.</h1> -->
+            </section>
+        </div>
+    </div>
+
+    <script src="../lib/js/head.min.js"></script>
+    <script src="../js/reveal.js"></script>
+
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            //Add options to print PDF
+            pdfSeparateFragments: false,
+            pdf: true,
+            slideNumber: 'c/t',
+            pdfMaxPagesPerSlide: 1,
+            parallaxBackgroundHorizontal: 200,
+            parallaxBackgroundVertical: 50,
+
+            transition: 'slide', // none/fade/slide/convex/zoom/zoom
+            dependencies: [{
+                src: 'lib/js/classList.js',
+                condition: function() {
+                    return !document.body.classList;
+                }
+            }, {
+                src: '../plugin/markdown/marked.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: '../plugin/markdown/markdown.js',
+                condition: function() {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            }, {
+                src: '../plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }, {
+                src: '../plugin/search/search.js',
+                async: true
+            }, {
+                src: '../plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: '../plugin/notes/notes.js',
+                async: true
+            }]
+        });
+        Reveal.addEventListener('ready', function(event) {
+            if (event.currentSlide.classList == 'no-logo present') {
+                document.body.classList.add('off');
+            } else {
+                document.body.classList.remove('off');
+            }
+            document.querySelector('.logo').classList.remove('on');
+        });
+        Reveal.addEventListener('slidechanged', function(event) {
+            if (event.currentSlide.classList == 'no-logo present') {
+                document.body.classList.add('off');
+            } else {
+                document.body.classList.remove('off');
+            }
+        });
+
+        Reveal.addEventListener('paused', function(event) {
+            document.querySelector('.logo').classList.add('on');
+        });
+
+        Reveal.addEventListener('resumed', function(event) {
+            document.querySelector('.logo').classList.remove('on');
+        });
+    </script>
+
+</body>
+
+</html>

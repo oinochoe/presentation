@@ -1,4 +1,4 @@
-# Toby's Presentation (Reveal.js) MIT licensed
+# Noel's Presentation (Reveal.js)
 
 ## 02_TEST
 * Export to PDF
